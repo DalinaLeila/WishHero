@@ -1,63 +1,27 @@
-import React, { Component } from "react";
-
+import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import axios from "axios";
-import WishlistForm from "./WishlistForm";
+import moment from "moment";
 
-class Wishlist extends Component {
-  state = {
-    wishlists: null,
-    showForm: false
-  };
-
-  // componentWillUnmount() {
-  //   console.log("PROJECTS UNMOUNT");
-  // }
-
-  getData = () => {
-    // axios
-    //   .get("http://localhost:5555/api/projects")
-    axios
-      .get("/api/wishlist/mywishlists")
-      .then(response => {
-        this.setState({
-          wishlists: response.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  componentDidMount() {
-    this.getData();
-  }
-
-  handleClick = () => {
-    this.setState({
-      showForm: !this.state.showForm
-    });
-  };
-
-  render() {
-    if (!this.state.wishlists) return <div></div>;
+const Wishlist = props => {
+  return props.user.wishlists.map(wishlist => {
     return (
-      <div className="projects-container">
-        {/* <Button onClick={this.handleClick}>New Wishlist</Button> */}
-        <Link to="wishlist/new">New Wishlist</Link>
-
-        <div>
-          {/* {this.state.showForm && (
-            <WishlistForm
-              handleClick={this.handleClick}
-              refreshData={this.getData}
-            />
-          )} */}
-        </div>
+      <div className="wishlist-card">
+        {/* <div className="gift-num">{wishlist.gifts.length}</div> */}
+        <Link key={wishlist._id} to={`/wishlists/${wishlist._id}`}>
+          <h6 className="wishlist-name">{wishlist.name}</h6>
+        </Link>
+        <h6> {moment(wishlist.eventDate).fromNow()}</h6>
+        {/* <p> posted {moment(wishlist.updated_at).fromNow()}</p> */}
+        {props.loggedIn._id === props.user._id && (
+          <img
+            width="20px"
+            src={require("../../assets/bin.png")}
+            onClick={() => props.deleteWishlist(wishlist._id)}
+          />
+        )}
       </div>
     );
-  }
-}
+  });
+};
 
 export default Wishlist;

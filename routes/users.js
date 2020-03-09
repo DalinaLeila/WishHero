@@ -57,52 +57,36 @@ router.get("/profile/:id", (req, res, next) => {
 
 router.put("/follow/:id", (req, res, next) => {
   //this is only for following - still need to do pull for unfollow
-  const userId = req.params.id;
-  User.findById(userId)
-    .then(user => {
-      if (user.followers.includes(req.user._id)) {
-        User.findByIdAndUpdate(userId, {
-          $pull: { followers: req.user._id },
-          new: true
-        })
-          .then(user => {
-            User.findByIdAndUpdate(req.user._id, {
-              $pull: { following: user._id },
-              new: true
-            });
-          })
-          .then(user => {
-            User.find({})
-              .populate("wishlists")
-              .populate("savedGifts")
-              .then(user => {
-                res.json(user);
-              });
-          });
-      } else {
-        User.findByIdAndUpdate(userId, {
-          $push: { followers: req.user._id },
-          new: true
-        })
-          .then(user => {
-            User.findByIdAndUpdate(req.user._id, {
-              $push: { following: user._id },
-              new: true
-            });
-          })
-          .then(user => {
-            User.find({})
-              .populate("wishlists")
-              .populate("savedGifts")
-              .then(user => {
-                res.json(user);
-              });
-          });
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  const profileId = req.params.id;
+  User.findById(profileId).then(user => {
+    if (user.followers.includes(req.user._id)) {
+      User.findByIdAndUpdate(
+        req.user._id,
+        { $pull: { following: profileId } },
+        { new: true }
+      ).then(res => console.log("unfollowed"));
+      User.findByIdAndUpdate(
+        profileId,
+        { $pull: { followers: req.user._id } },
+        { new: true }
+      ).then(user => {
+        res.json(user);
+      });
+    } else {
+      User.findByIdAndUpdate(
+        req.user._id,
+        { $push: { following: profileId } },
+        { new: true }
+      ).then(res => console.log("following"));
+      User.findByIdAndUpdate(
+        profileId,
+        { $push: { followers: req.user._id } },
+        { new: true }
+      ).then(user => {
+        res.json(user);
+      });
+    }
+  });
 });
 
 module.exports = router;

@@ -53,3 +53,16 @@ h2 {
 .projects-container > * {
   flex: 1;
 }
+
+.navbar {
+  width: 100vw;
+  background-color: #285943;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}

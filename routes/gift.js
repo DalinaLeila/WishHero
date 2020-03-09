@@ -108,4 +108,14 @@ router.delete("/delete/:id", (req, res, next) => {
     });
 });
 
+router.get("/gifts/view/:id", (req, res, next) => {
+  Gift.find({ owner: req.params.id })
+    .then(gifts => {
+      console.log(gifts);
+      res.json(gifts);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
 module.exports = router;

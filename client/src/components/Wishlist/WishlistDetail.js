@@ -9,6 +9,7 @@ class WishlistDetail extends Component {
     wishlist: null,
     error: "",
     editForm: false,
+    addGift: false,
     name: "",
     description: ""
   };
@@ -40,22 +41,9 @@ class WishlistDetail extends Component {
     this.getData();
   }
 
-  deleteWishlist = () => {
-    const wishlistId = this.state.wishlist._id;
-    axios
-      .delete(`/api/wishlist/${wishlistId}`)
-      .then(response => {
-        console.log(this.props.history);
-        this.props.history.push(`/profile/${this.props.user._id}`);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  toggleEdit = () => {
+  toggleForm = key => {
     this.setState({
-      editForm: !this.state.editForm
+      [key]: !this.state[key]
     });
   };
 
@@ -82,7 +70,8 @@ class WishlistDetail extends Component {
           wishlist: response.data,
           // title: response.data.title,
           // description: response.data.description,
-          editForm: false
+          editForm: false,
+          addGift: false
         });
         console.log(response);
       })
@@ -97,28 +86,36 @@ class WishlistDetail extends Component {
     } else if (this.state.wishlist === null) {
       return <div></div>;
     }
-    const { wishlist, editForm } = this.state;
+    const { wishlist, addGift, editForm } = this.state;
     console.log(wishlist);
     return (
       <div>
         <>
           <h1>{wishlist.name}</h1>
           <p>{wishlist.description}</p>
-          <Gift
+          {/* <Gift
             user={this.props.user}
             owner={wishlist.owner}
             handleDelete={this.handleDeleteGift}
             gifts={wishlist.gifts}
-          />
+          /> */}
         </>
 
         {this.props.user._id === wishlist.owner && (
           <>
-            <Button onClick={this.toggleEdit}>Show Edit Form</Button>
-
-            <Button variant="danger" onClick={this.deleteWishlist}>
-              Delete wishlist
+            <Button onClick={() => this.toggleForm("editForm")}>
+              Show Edit Form
             </Button>
+            <Button onClick={() => this.toggleForm("addGift")}>
+              Add Gift{" "}
+            </Button>
+            <img
+              width="20px"
+              src={require("../../assets/bin.png")}
+              onClick={() =>
+                this.props.deleteWishlist(this.props.match.params.id)
+              }
+            />
 
             {editForm && (
               <Form onSubmit={this.handleSubmit}>
@@ -146,11 +143,13 @@ class WishlistDetail extends Component {
                 <Button type="submit">Edit</Button>
               </Form>
             )}
-
-            <GiftForm
-              wishlistId={this.state.wishlist._id}
-              getData={this.getData}
-            />
+            {addGift && (
+              <GiftForm
+                toggleForm={this.toggleForm}
+                wishlistId={this.state.wishlist._id}
+                getData={this.getData}
+              />
+            )}
           </>
         )}
       </div>

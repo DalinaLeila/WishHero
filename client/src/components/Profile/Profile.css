@@ -1,0 +1,82 @@
+.profile-banner {
+  background-color: #285943;
+  height: 30vh;
+}
+.button-wrapper {
+  /* width: 100vw; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-wrapper {
+  display: block;
+  margin-left: 25%;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.profile-info {
+  padding: 20px;
+  box-shadow: 3px -4px 10px 5px rgba(0, 0, 0, 0.11);
+  background-color: #77af9c;
+  width: 300px;
+  height: 700px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 100px;
+}
+
+.profile-info img {
+  border: 2px solid white;
+  border-radius: 100px;
+  position: relative;
+  /* width: 15%; */
+  margin-bottom: 20px;
+}
+
+.profile-info button {
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  width: 200px;
+  padding: 10px;
+}
+
+.profile-info button:focus {
+  outline: none;
+}
+.gift-num {
+  color: white;
+  margin: 10px;
+  background-color: #77af9c;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.wishlist-name {
+  /* margin-top: 100px; */
+}
+
+.wishlist-card {
+  background-color: #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
+  box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
+  position: relative;
+  width: 60%;
+  height: 2%;
+  margin-right: 2.33333%;
+  margin-bottom: 1.65rem;
+  /* padding: 20px;
+  border-radius: 1px;
+  width: 400px;
+  height: 200px;
+  margin-top: 30px;
+  box-shadow: 3px -4px 10px 5px rgba(0, 0, 0, 0.11); */
+}

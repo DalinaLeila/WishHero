@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, withRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
-
+import axios from "axios";
 import Profile from "./components/Profile/Profile";
 import Wishlist from "./components/Wishlist/Wishlist";
 import WishlistForm from "./components/Wishlist/WishlistForm";
@@ -12,7 +12,6 @@ import WishlistDetail from "./components/Wishlist/WishlistDetail";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Home from "./Home";
-
 class App extends React.Component {
   state = { user: this.props.user };
 
@@ -20,6 +19,20 @@ class App extends React.Component {
     this.setState({
       user: user
     });
+  };
+
+  deleteWishlist = id => {
+    const wishlistId = id;
+    console.log(this.props.match);
+    axios
+      .delete(`/api/wishlist/${wishlistId}`)
+      .then(response => {
+        console.log(this.props.history);
+        this.props.history.push(`/profile/${this.state.user._id}`);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -47,7 +60,13 @@ class App extends React.Component {
           // component={Projects}
           render={props => {
             if (this.state.user) {
-              return <Profile {...props} user={this.state.user} />;
+              return (
+                <Profile
+                  {...props}
+                  user={this.state.user}
+                  deleteWishlist={this.deleteWishlist}
+                />
+              );
             } else {
               return <Redirect to="/" />;
             }
@@ -62,7 +81,13 @@ class App extends React.Component {
           // component={Projects}
           render={props => {
             if (this.state.user) {
-              return <WishlistDetail {...props} user={this.state.user} />;
+              return (
+                <WishlistDetail
+                  {...props}
+                  user={this.state.user}
+                  deleteWishlist={this.deleteWishlist}
+                />
+              );
             } else {
               return <Redirect to="/" />;
             }
@@ -109,4 +134,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

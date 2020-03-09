@@ -1,0 +1,28 @@
+.auth-wrapper {
+  background-color: #285943;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth-container {
+  display: flex;
+  justify-content: center;
+}
+.auth-info {
+  background-color: #77af9c;
+  width: 20%;
+}
+
+.auth-component {
+  background-color: white;
+  padding: 100px;
+}
+
+button {
+  color: white;
+  background-color: #77af9c;
+  padding: 10px;
+  width: 100px;
+  border-radius: 20px;
+}

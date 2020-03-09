@@ -108,7 +108,13 @@ router.delete("/:id", (req, res) => {
   Wishlist.findByIdAndDelete(wishlistId)
     .then(wishlist => {
       // Deletes all the documents in the Task collection where the value for the `_id` field is present in the `wishlist.gifts` array
-      return Gift.deleteMany({ _id: { $in: wishlist.gifts } }).then(() =>
+
+      User.findByIdAndUpdate(req.user._id, {
+        $pull: { wishlists: wishlistId }
+      }).then(() => {
+        console.log("deleted wishlist link");
+      });
+      Gift.deleteMany({ _id: { $in: wishlist.gifts } }).then(() =>
         res.json({ message: "ok" })
       );
     })

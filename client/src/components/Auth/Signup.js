@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { signup } from "./Auth";
 import { Alert, Form, Button } from "react-bootstrap";
-
+import "./auth.css";
 class Signup extends Component {
   state = {
     username: "",
@@ -36,34 +36,38 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Signup</h2>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group>
-            <Form.Label htmlFor="username">Username: </Form.Label>
-            <Form.Control
-              type="text"
-              name="username"
-              id="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="password">Password: </Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              id="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          {this.state.error && (
-            <Alert variant="danger">{this.state.error}</Alert>
-          )}
-          <Button type="submit">Sign up</Button>
-        </Form>
+      <div className="auth-wrapper">
+        <div class="auth-container">
+          <div className="auth-info"></div>
+          <div class="auth-component">
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor="username">Username: </Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  id="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="password">Password: </Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              {this.state.error && (
+                <Alert variant="danger">{this.state.error}</Alert>
+              )}
+              <button type="submit">Sign up</button>
+            </Form>
+          </div>
+        </div>
       </div>
     );
   }
