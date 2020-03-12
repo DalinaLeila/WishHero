@@ -150,13 +150,15 @@ class WishlistDetail extends Component {
           </>
         )}
         <div className="profile-content">
-          <button
-            onClick={() => this.toggleForm("addGift")}
-            className="gift-card flex-add-gift"
-          >
-            <img width="30px" src={require("../../assets/plus.png")} />
-            Add Gift
-          </button>
+          {this.props.loggedIn._id === wishlist.owner && (
+            <button
+              onClick={() => this.toggleForm("addGift")}
+              className="gift-card flex-add-gift"
+            >
+              <img width="30px" src={require("../../assets/plus.png")} />
+              Add Gift
+            </button>
+          )}
           <Gift
             loggedIn={this.props.loggedIn}
             handleDelete={this.props.handleDelete}

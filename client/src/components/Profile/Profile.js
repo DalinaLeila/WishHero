@@ -115,23 +115,31 @@ export default class Profile extends Component {
 
     return (
       <>
-        <div className="profile-banner"></div>
+        <div className="profile-banner">
+          <h3>{user.username.toUpperCase()}</h3>
+          {/* <p>member since {moment(user.created_at)}</p> */}
+        </div>
         <div className="profile-info">
-          <img width="50%" src={user.profileImg} alt="" />
+          <div>
+            <img width="50%" src={user.profileImg} alt="" />
 
-          <h3>{user.username}</h3>
+            {this.props.user._id !== user._id && (
+              <button onClick={() => this.handleFollow(user._id)}>
+                {user.followers.includes(this.props.user._id)
+                  ? "Unfollow "
+                  : "Follow "}
+                {user.username}
+              </button>
+            )}
+          </div>
+          <div>
+            <p>Gift wishes: {gifts.length}</p>
+            <hr />
+            <p>Followers: {user.followers.length}</p>
+            <hr />
 
-          {this.props.user._id !== user._id && (
-            <button onClick={() => this.handleFollow(user._id)}>
-              {user.followers.includes(this.props.user._id)
-                ? "Unfollow"
-                : "Follow"}
-            </button>
-          )}
-
-          <p>Gift wishes: {gifts.length}</p>
-          <p>Followers: {user.followers.length}</p>
-          <p>Following: {user.following.length}</p>
+            <p>Following: {user.following.length}</p>
+          </div>
         </div>
         <div className="component-wrapper">
           <div className="profile-wrapper">

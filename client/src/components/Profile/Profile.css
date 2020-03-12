@@ -1,6 +1,14 @@
 .profile-banner {
   background-color: #285943;
   height: 30vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.profile-banner h3 {
+  margin: 0 0 2% 30%;
+  color: white;
+  font-weight: bold;
 }
 .button-wrapper {
   /* width: 100px; */
@@ -26,6 +34,10 @@
   justify-content: space-evenly;
 }
 .profile-info {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
   padding: 20px;
   box-shadow: 3px -4px 10px 5px rgba(0, 0, 0, 0.11);
   background-color: #77af9c;
