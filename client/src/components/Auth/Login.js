@@ -64,7 +64,9 @@ class Login extends Component {
               {this.state.error && (
                 <Alert variant="danger">{this.state.error}</Alert>
               )}
-              <button type="submit">Log in</button>
+              <button className="button" type="submit">
+                Log in
+              </button>
             </Form>
           </div>
         </div>

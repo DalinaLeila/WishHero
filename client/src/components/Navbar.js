@@ -20,9 +20,18 @@ const Navbar = props => {
         {props.user ? (
           <>
             <Link to={`/profile/${props.user._id}`}>
+              <img
+                className="profile-pic-nav"
+                width="30px"
+                src={props.user.profileImg}
+                alt=""
+              />
               Hello {props.user.username}
             </Link>
-            <Link to="/profile/wishlist/new">Create</Link>
+            <Link to="/profile/wishlist/new">
+              {" "}
+              <img width="20px" src={require("../assets/pen.png")} />
+            </Link>
 
             <Link to="/logout" onClick={() => handleLogout()}>
               Logout

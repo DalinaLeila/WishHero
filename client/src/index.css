@@ -25,3 +25,18 @@ code {
 .flex-user-container div img {
   border-radius: 100px;
 }
+
+.input-field {
+  border-radius: 20px;
+  padding: 17px;
+  padding-left: 55px;
+  width: 300px;
+  border: 1px solid #f5f5f5;
+  font-size: 13px;
+  color: gray;
+  background-image: url("./assets/searchDark.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  outline: 0;
+}

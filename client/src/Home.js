@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import axios from "axios";
 import Login from "./components/Auth/Login";
 
@@ -66,8 +65,14 @@ class Home extends Component {
       );
     });
     return (
-      <div className="home-container">
-        <input onChange={e => this.handleSearch(e)} type="text" />
+      <div className="home-container input-icons">
+        {/* <img className="icon" src={require("./assets/searchDark.png")} /> */}
+        <input
+          className="input-field"
+          onChange={e => this.handleSearch(e)}
+          type="text"
+        />
+
         <Link to="/profile/wishlist/new">
           <button>New Wishlist</button>
         </Link>

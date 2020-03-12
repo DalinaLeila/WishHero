@@ -28,7 +28,9 @@ class WishlistDetail extends Component {
       .then(response => {
         console.log("DETAIL", response.data);
         this.setState({
-          wishlist: response.data
+          wishlist: response.data,
+          name: response.data.name,
+          description: response.data.description
         });
       })
       .catch(err => {
@@ -86,6 +88,7 @@ class WishlistDetail extends Component {
           editForm: false,
           addGift: false
         });
+        this.props.getUserProfile();
         console.log(response);
       })
       .catch(err => {
@@ -104,32 +107,11 @@ class WishlistDetail extends Component {
     return (
       <div>
         <button onClick={() => this.props.toggleDetail()}>Back</button>
-        <>
-          <h1>{wishlist.name}</h1>
-          <p>{wishlist.description}</p>
-          <Gift
-            loggedIn={this.props.loggedIn}
-            handleDelete={this.props.handleDelete}
-            gifts={wishlist.gifts}
-            user={this.props.user}
-          />
-        </>
-
+        <h1>{wishlist.name}</h1>
+        <p>{wishlist.description}</p>
         {this.props.loggedIn._id === wishlist.owner && (
           <>
-            <Button onClick={() => this.toggleForm("editForm")}>
-              Show Edit Form
-            </Button>
-            <Button onClick={() => this.toggleForm("addGift")}>
-              Add Gift{" "}
-            </Button>
-            <img
-              width="20px"
-              src={require("../../assets/bin.png")}
-              onClick={() =>
-                this.props.deleteWishlist(this.props.match.params.id)
-              }
-            />
+            <div onClick={() => this.toggleForm("editForm")}>Edit</div>
 
             {editForm && (
               <Form onSubmit={this.handleSubmit}>
@@ -167,6 +149,21 @@ class WishlistDetail extends Component {
             )}
           </>
         )}
+        <div className="profile-content">
+          <button
+            onClick={() => this.toggleForm("addGift")}
+            className="gift-card flex-add-gift"
+          >
+            <img width="30px" src={require("../../assets/plus.png")} />
+            Add Gift
+          </button>
+          <Gift
+            loggedIn={this.props.loggedIn}
+            handleDelete={this.props.handleDelete}
+            gifts={wishlist.gifts}
+            user={this.props.user}
+          />
+        </div>
       </div>
     );
   }

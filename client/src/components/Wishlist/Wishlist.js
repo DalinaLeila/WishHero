@@ -6,8 +6,10 @@ const Wishlist = props => {
   return props.user.wishlists.map(wishlist => {
     return (
       <div className="wishlist-card">
-        <div onClick={() => props.toggleDetail(wishlist._id)}>
-          DETAIL
+        <div
+          className="detail-card"
+          onClick={() => props.toggleDetail(wishlist._id)}
+        >
           {/* <div className="gift-num">{wishlist.gifts.length}</div> */}
           <h6 className="wishlist-name">{wishlist.name}</h6>
           <h6> {moment(wishlist.eventDate).fromNow()}</h6>

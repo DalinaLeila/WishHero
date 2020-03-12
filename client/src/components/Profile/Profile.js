@@ -133,58 +133,70 @@ export default class Profile extends Component {
           <p>Followers: {user.followers.length}</p>
           <p>Following: {user.following.length}</p>
         </div>
-        <div className="profile-wrapper">
-          {wishlistDetail ? (
-            <WishlistDetail
-              loggedIn={this.props.user}
-              deleteWishlist={this.props.deleteWishlist}
-              detailId={this.state.detailId}
-              toggleDetail={this.showListDetail}
-              gifts={gifts}
-              handleDelete={this.handleDeleteGift}
-              user={user}
-              getGifts={this.getGifts}
-            />
-          ) : (
-            <div>
-              <div className="button-wrapper">
-                <button onClick={() => this.handleView(true, "list")}>
-                  Lists
-                </button>
-                <button onClick={() => this.handleView(false, "gift")}>
-                  Gifts
-                </button>
-              </div>
-              {this.props.user._id === user._id && (
-                <Link to="wishlist/new">
-                  <div className="profile-content">
-                    <div className="wishlist-card create-card">
-                      New Wishlist
+        <div className="component-wrapper">
+          <div className="profile-wrapper">
+            {wishlistDetail ? (
+              <WishlistDetail
+                loggedIn={this.props.user}
+                detailId={this.state.detailId}
+                toggleDetail={this.showListDetail}
+                gifts={gifts}
+                handleDelete={this.handleDeleteGift}
+                user={user}
+                getGifts={this.getGifts}
+                getUserProfile={this.getUserProfile}
+              />
+            ) : (
+              <div>
+                <div className="button-wrapper">
+                  <button className="view-button">
+                    <img
+                      width="30px"
+                      src={require("../../assets/heart.png")}
+                      onClick={() => this.handleView(true, "list")}
+                    />
+                  </button>
+                  <button className="view-button">
+                    <img
+                      width="30px"
+                      src={require("../../assets/gift-box.png")}
+                      onClick={() => this.handleView(false, "gift")}
+                    />
+                  </button>
+                </div>
+                {this.props.user._id === user._id && (
+                  <Link to="wishlist/new">
+                    <div className="profile-content">
+                      <div className="wishlist-card create-card">
+                        New Wishlist
+                        <img
+                          width="20px"
+                          src={require("../../assets/add.png")}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              )}
-              {wishlistShow ? (
+                  </Link>
+                )}
                 <div className="profile-content">
-                  <Wishlist
-                    loggedIn={this.props.user}
-                    user={user}
-                    deleteWishlist={this.props.deleteWishlist}
-                    toggleDetail={this.showListDetail}
-                  />
+                  {wishlistShow ? (
+                    <Wishlist
+                      loggedIn={this.props.user}
+                      user={user}
+                      deleteWishlist={this.props.deleteWishlist}
+                      toggleDetail={this.showListDetail}
+                    />
+                  ) : (
+                    <Gift
+                      gifts={gifts}
+                      user={user}
+                      loggedIn={this.props.user}
+                      handleDelete={this.handleDeleteGift}
+                    />
+                  )}
                 </div>
-              ) : (
-                <div className="profile-content">
-                  <Gift
-                    gifts={gifts}
-                    user={user}
-                    loggedIn={this.props.user}
-                    handleDelete={this.handleDeleteGift}
-                  />
-                </div>
-              )}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
       </>
     );
