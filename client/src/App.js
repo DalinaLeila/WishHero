@@ -6,6 +6,7 @@ import axios from "axios";
 import Profile from "./components/Profile/Profile";
 import Wishlist from "./components/Wishlist/Wishlist";
 import WishlistForm from "./components/Wishlist/WishlistForm";
+import Landing from "./Landing";
 
 import WishlistDetail from "./components/Wishlist/WishlistDetail";
 // import GiftDetail from "./components/GiftDetail";

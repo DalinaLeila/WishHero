@@ -8,7 +8,6 @@ import Gift from "../Gift/Gift";
 import WishlistDetail from "../Wishlist/WishlistDetail";
 export default class Profile extends Component {
   state = {
-    wishlists: [],
     user: null,
     gifts: [],
     wishlistShow: true,
@@ -37,8 +36,7 @@ export default class Profile extends Component {
       .get(`/api/users/profile/${userId}`)
       .then(response => {
         this.setState({
-          user: response.data,
-          wishlists: response.data.wishlists
+          user: response.data
         });
       })
       .catch(err => {
@@ -53,6 +51,10 @@ export default class Profile extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
+      this.setState({
+        wishlistShow: true,
+        wishlistDetail: false
+      });
       this.getUserProfile();
       this.getGifts();
     }
@@ -156,7 +158,7 @@ export default class Profile extends Component {
                     className="view-button button-active"
                     onClick={() => this.handleView(true, "list")}
                   >
-                    <img width="30px" src={require("../../assets/heart.png")} />
+                    <img width="20px" src={require("../../assets/heart.png")} />
                     lists
                   </button>
                   <button
@@ -164,7 +166,7 @@ export default class Profile extends Component {
                     onClick={() => this.handleView(false, "gift")}
                   >
                     <img
-                      width="30px"
+                      width="20px"
                       src={require("../../assets/gift-box.png")}
                     />
                     gifts

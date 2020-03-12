@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/Auth/Login";
-
 class Home extends Component {
   state = {
     users: null,
@@ -69,7 +68,6 @@ class Home extends Component {
           onChange={e => this.handleSearch(e)}
           type="text"
         />
-
         <div className="flex-user-container">{users}</div>
       </div>
     );
