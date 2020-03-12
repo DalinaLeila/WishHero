@@ -25,7 +25,6 @@ export default class Profile extends Component {
         this.setState({
           gifts: res.data
         });
-        console.log("halllooo", res.data);
       })
       .catch(err => {
         console.log(err);
@@ -34,8 +33,6 @@ export default class Profile extends Component {
 
   getUserProfile = () => {
     const userId = this.props.match.params.id;
-    //axios call to get the user requested
-    console.log("params ID", userId);
     axios
       .get(`/api/users/profile/${userId}`)
       .then(response => {
@@ -43,7 +40,6 @@ export default class Profile extends Component {
           user: response.data,
           wishlists: response.data.wishlists
         });
-        console.log(this.state);
       })
       .catch(err => {
         console.log(err);
@@ -66,7 +62,6 @@ export default class Profile extends Component {
     axios
       .put(`/api/users/follow/${userId}`)
       .then(response => {
-        console.log("following", response.data.followers);
         this.setState({
           user: response.data
         });
@@ -95,7 +90,6 @@ export default class Profile extends Component {
   };
 
   showListDetail = id => {
-    console.log("WHATS GOING ON", id);
     if (id) {
       this.setState({
         wishlistDetail: true,
@@ -108,8 +102,6 @@ export default class Profile extends Component {
     }
   };
   render() {
-    console.log("STATTTEEE", this.state.user);
-
     const { user, gifts, wishlistDetail, wishlistShow } = this.state;
     if (!user) return <div></div>;
 
@@ -124,7 +116,10 @@ export default class Profile extends Component {
             <img width="50%" src={user.profileImg} alt="" />
 
             {this.props.user._id !== user._id && (
-              <button onClick={() => this.handleFollow(user._id)}>
+              <button
+                className="button-active"
+                onClick={() => this.handleFollow(user._id)}
+              >
                 {user.followers.includes(this.props.user._id)
                   ? "Unfollow "
                   : "Follow "}
@@ -157,19 +152,22 @@ export default class Profile extends Component {
             ) : (
               <div>
                 <div className="button-wrapper">
-                  <button className="view-button">
-                    <img
-                      width="30px"
-                      src={require("../../assets/heart.png")}
-                      onClick={() => this.handleView(true, "list")}
-                    />
+                  <button
+                    className="view-button button-active"
+                    onClick={() => this.handleView(true, "list")}
+                  >
+                    <img width="30px" src={require("../../assets/heart.png")} />
+                    lists
                   </button>
-                  <button className="view-button">
+                  <button
+                    className="view-button button-active"
+                    onClick={() => this.handleView(false, "gift")}
+                  >
                     <img
                       width="30px"
                       src={require("../../assets/gift-box.png")}
-                      onClick={() => this.handleView(false, "gift")}
                     />
+                    gifts
                   </button>
                 </div>
                 {this.props.user._id === user._id && (

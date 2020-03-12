@@ -5,7 +5,6 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 
 const Gift = props => {
-  console.log("gifts", props.gifts);
   let gift = props.gifts.map(gift => {
     return (
       <div className="gift-card">

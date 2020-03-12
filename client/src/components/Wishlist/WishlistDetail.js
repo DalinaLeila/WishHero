@@ -16,17 +16,11 @@ class WishlistDetail extends Component {
   };
 
   getData = () => {
-    // get the data from the API
-    // update the state accordingly
-
-    // const wishlistId = this.props.match.params.id;
     const wishlistId = this.props.detailId;
-    // console.log("/api/projects/" + id);
 
     axios
       .get(`/api/wishlist/${wishlistId}`)
       .then(response => {
-        console.log("DETAIL", response.data);
         this.setState({
           wishlist: response.data,
           name: response.data.name,
@@ -43,13 +37,11 @@ class WishlistDetail extends Component {
   };
 
   componentDidMount() {
-    console.log("MOUTNED");
     this.getData();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      console.log("update");
       this.getData();
     }
   }
@@ -61,7 +53,6 @@ class WishlistDetail extends Component {
   };
 
   handleChange = event => {
-    console.log("hiii", event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -89,7 +80,6 @@ class WishlistDetail extends Component {
           addGift: false
         });
         this.props.getUserProfile();
-        console.log(response);
       })
       .catch(err => {
         console.log(err);
@@ -103,42 +93,46 @@ class WishlistDetail extends Component {
       return <div></div>;
     }
     const { wishlist, addGift, editForm } = this.state;
-    console.log(wishlist);
     return (
       <div>
         <button onClick={() => this.props.toggleDetail()}>Back</button>
-        <h1>{wishlist.name}</h1>
-        <p>{wishlist.description}</p>
+
+        {editForm && this.props.loggedIn._id === wishlist.owner ? (
+          <Form onSubmit={this.handleSubmit}>
+            <h2>Edit form</h2>
+            <Form.Group>
+              <Form.Label htmlFor="name">name: </Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                id="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="description">Description: </Form.Label>
+              <Form.Control
+                type="text"
+                name="description"
+                id="description"
+                value={this.state.description}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Button type="submit">Edit</Button>
+          </Form>
+        ) : (
+          <>
+            {this.props.loggedIn._id === wishlist.owner && (
+              <div onClick={() => this.toggleForm("editForm")}>Edit</div>
+            )}
+            <h1>{wishlist.name}</h1>
+            <p>{wishlist.description}</p>
+          </>
+        )}
         {this.props.loggedIn._id === wishlist.owner && (
           <>
-            <div onClick={() => this.toggleForm("editForm")}>Edit</div>
-
-            {editForm && (
-              <Form onSubmit={this.handleSubmit}>
-                <h2>Edit form</h2>
-                <Form.Group>
-                  <Form.Label htmlFor="name">name: </Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    id="name"
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label htmlFor="description">Description: </Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="description"
-                    id="description"
-                    value={this.state.description}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Button type="submit">Edit</Button>
-              </Form>
-            )}
             {addGift && (
               <GiftForm
                 getGifts={this.props.getGifts}

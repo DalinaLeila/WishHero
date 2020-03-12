@@ -43,7 +43,6 @@ router.get("/:id", (req, res) => {
   Wishlist.findById(wishlistId)
     .populate("gifts")
     .then(wishlist => {
-      console.log("populate gift", wishlist);
       if (!wishlist) {
         res.status(404).json({ message: "Wishlist not found" });
       } else res.json(wishlist);

@@ -27,7 +27,6 @@ router.post("/add/:id", (req, res) => {
     //importance,
     details
   } = req.body;
-  console.log(req.body);
   Gift.create({
     name,
     details,
@@ -110,7 +109,6 @@ router.delete("/delete/:id", (req, res, next) => {
 router.get("/gifts/view/:id", (req, res, next) => {
   Gift.find({ owner: req.params.id })
     .then(gifts => {
-      console.log(gifts);
       res.json(gifts);
     })
     .catch(err => {

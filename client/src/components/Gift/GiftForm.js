@@ -21,7 +21,6 @@ class GiftForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("SUBMIT");
     if (!this.state.name || !this.state.details || !this.state.price) return;
     axios
       .post(`/api/gift/add/${this.props.wishlistId}`, {
@@ -30,7 +29,6 @@ class GiftForm extends Component {
         price: this.state.price
       })
       .then(response => {
-        console.log(response.data);
         this.props.getData();
         this.setState({
           name: "",

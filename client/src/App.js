@@ -23,11 +23,9 @@ class App extends React.Component {
 
   deleteWishlist = id => {
     const wishlistId = id;
-    console.log(this.props.match);
     axios
       .delete(`/api/wishlist/delete/${wishlistId}`)
       .then(response => {
-        console.log(this.props.history);
         this.props.history.push(`/profile/${this.state.user._id}`);
       })
       .catch(err => {

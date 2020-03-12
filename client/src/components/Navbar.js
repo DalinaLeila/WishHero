@@ -10,7 +10,6 @@ const Navbar = props => {
     props.clearUser(null);
   };
 
-  console.log(props);
   return (
     <Nav className="nav navbar">
       <div>

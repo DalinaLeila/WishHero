@@ -25,7 +25,6 @@ class WishlistForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("SUBMIT");
 
     // axios.post('http://localhost:5555/api/projects')
     axios

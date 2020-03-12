@@ -17,14 +17,12 @@ router.get("/", (req, res, next) => {
 
 router.get("/:username", (req, res, next) => {
   const username = req.params.username;
-  console.log("USERNAME", username);
   if (username) {
     User.find({ username: new RegExp(username, "i") })
       .populate("wishlists")
       .populate("savedGifts")
       .then(user => {
         res.json(user);
-        console.log(user);
       })
       .catch(err => {
         console.log(err);
@@ -70,9 +68,12 @@ router.put("/follow/:id", (req, res, next) => {
         profileId,
         { $pull: { followers: req.user._id } },
         { new: true }
-      ).then(user => {
-        res.json(user);
-      });
+      )
+        .populate("wishlists")
+        .populate("gifts")
+        .then(user => {
+          res.json(user);
+        });
     } else {
       User.findByIdAndUpdate(
         req.user._id,
@@ -83,9 +84,12 @@ router.put("/follow/:id", (req, res, next) => {
         profileId,
         { $push: { followers: req.user._id } },
         { new: true }
-      ).then(user => {
-        res.json(user);
-      });
+      )
+        .populate("wishlists")
+        .populate("gifts")
+        .then(user => {
+          res.json(user);
+        });
     }
   });
 });

@@ -18,10 +18,22 @@
 }
 .view-button {
   margin-right: 20px;
-  background-color: transparent;
-  border: none;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 10px;
+  box-shadow: none;
+}
+.view-button:focus {
+  border: 2px solid gray;
+  box-shadow: 1px -1px 15px 5px rgba(0, 0, 0, 0.11);
+  outline: none;
 }
 
+.button-active:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
 .profile-wrapper {
   display: block;
   margin-left: 25%;

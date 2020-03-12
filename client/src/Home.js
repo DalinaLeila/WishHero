@@ -43,12 +43,9 @@ class Home extends Component {
 
   componentDidMount() {
     this.getData();
-    console.log(this.state.users);
   }
 
   render() {
-    console.log("ME", this.props.user);
-
     if (!this.state.users) return <div></div>;
     let users = this.state.users.map(user => {
       if (this.props.user._id === user._id) return;
@@ -73,9 +70,6 @@ class Home extends Component {
           type="text"
         />
 
-        <Link to="/profile/wishlist/new">
-          <button>New Wishlist</button>
-        </Link>
         <div className="flex-user-container">{users}</div>
       </div>
     );
