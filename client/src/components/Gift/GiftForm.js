@@ -38,6 +38,7 @@ class GiftForm extends Component {
           price: 0
         });
         this.props.toggleForm("addGift");
+        this.props.getGifts();
       })
       .catch(err => {
         console.log(err);

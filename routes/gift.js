@@ -97,11 +97,10 @@ router.delete("/delete/:id", (req, res, next) => {
       return Wishlist.findByIdAndUpdate(gift.wishlist, {
         $pull: { gifts: gift._id },
         new: true
-      })
-        .populate("gifts")
-        .then(wishlist => {
-          res.json(wishlist);
-        });
+      });
+    })
+    .then(() => {
+      res.json();
     })
     .catch(err => {
       res.status(500).json(err);

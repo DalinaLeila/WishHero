@@ -46,6 +46,7 @@ router.get("/profile/:id", (req, res, next) => {
   const userId = req.params.id;
   User.findById(userId)
     .populate("wishlists")
+    .populate("gifts")
     .populate("savedGifts")
     .then(user => {
       res.json(user);

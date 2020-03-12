@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import GiftForm from "../Gift/GiftForm";
 import Gift from "../Gift/Gift";
+import { Link } from "react-router-dom";
 
 class WishlistDetail extends Component {
   state = {
@@ -18,12 +19,14 @@ class WishlistDetail extends Component {
     // get the data from the API
     // update the state accordingly
 
-    const wishlistId = this.props.match.params.id;
+    // const wishlistId = this.props.match.params.id;
+    const wishlistId = this.props.detailId;
     // console.log("/api/projects/" + id);
 
     axios
       .get(`/api/wishlist/${wishlistId}`)
       .then(response => {
+        console.log("DETAIL", response.data);
         this.setState({
           wishlist: response.data
         });
@@ -38,7 +41,15 @@ class WishlistDetail extends Component {
   };
 
   componentDidMount() {
+    console.log("MOUTNED");
     this.getData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      console.log("update");
+      this.getData();
+    }
   }
 
   toggleForm = key => {
@@ -59,7 +70,9 @@ class WishlistDetail extends Component {
 
     // const id = this.state.project._id
 
-    const wishlistId = this.props.match.params.id;
+    // const wishlistId = this.props.match.params.id;
+    const wishlistId = this.props.detailId;
+
     axios
       .put(`/api/wishlist/${wishlistId}`, {
         name: this.state.name,
@@ -90,18 +103,19 @@ class WishlistDetail extends Component {
     console.log(wishlist);
     return (
       <div>
+        <button onClick={() => this.props.toggleDetail()}>Back</button>
         <>
           <h1>{wishlist.name}</h1>
           <p>{wishlist.description}</p>
-          {/* <Gift
-            user={this.props.user}
-            owner={wishlist.owner}
-            handleDelete={this.handleDeleteGift}
+          <Gift
+            loggedIn={this.props.loggedIn}
+            handleDelete={this.props.handleDelete}
             gifts={wishlist.gifts}
-          /> */}
+            user={this.props.user}
+          />
         </>
 
-        {this.props.user._id === wishlist.owner && (
+        {this.props.loggedIn._id === wishlist.owner && (
           <>
             <Button onClick={() => this.toggleForm("editForm")}>
               Show Edit Form
@@ -145,6 +159,7 @@ class WishlistDetail extends Component {
             )}
             {addGift && (
               <GiftForm
+                getGifts={this.props.getGifts}
                 toggleForm={this.toggleForm}
                 wishlistId={this.state.wishlist._id}
                 getData={this.getData}
@@ -155,21 +170,6 @@ class WishlistDetail extends Component {
       </div>
     );
   }
-
-  handleDeleteGift = giftId => {
-    axios
-      .delete(`/api/gift/delete/${giftId}`)
-      .then(response => {
-        console.log(this.props.history);
-        console.log(response);
-        this.setState({
-          wishlist: response.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 }
 
 export default WishlistDetail;

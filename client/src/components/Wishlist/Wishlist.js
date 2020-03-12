@@ -6,12 +6,13 @@ const Wishlist = props => {
   return props.user.wishlists.map(wishlist => {
     return (
       <div className="wishlist-card">
-        {/* <div className="gift-num">{wishlist.gifts.length}</div> */}
-        <Link key={wishlist._id} to={`/wishlists/${wishlist._id}`}>
+        <div onClick={() => props.toggleDetail(wishlist._id)}>
+          DETAIL
+          {/* <div className="gift-num">{wishlist.gifts.length}</div> */}
           <h6 className="wishlist-name">{wishlist.name}</h6>
-        </Link>
-        <h6> {moment(wishlist.eventDate).fromNow()}</h6>
-        {/* <p> posted {moment(wishlist.updated_at).fromNow()}</p> */}
+          <h6> {moment(wishlist.eventDate).fromNow()}</h6>
+          {/* <p> posted {moment(wishlist.updated_at).fromNow()}</p> */}
+        </div>
         {props.loggedIn._id === props.user._id && (
           <img
             width="20px"

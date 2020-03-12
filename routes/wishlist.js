@@ -102,7 +102,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE a wishlist including its gifts
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   const wishlistId = req.params.id;
 
   Wishlist.findByIdAndDelete(wishlistId)
