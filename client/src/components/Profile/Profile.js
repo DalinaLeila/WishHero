@@ -6,16 +6,25 @@ import "./Profile.css";
 import moment from "moment";
 import Gift from "../Gift/Gift";
 import WishlistDetail from "../Wishlist/WishlistDetail";
+import WishlistForm from "../Wishlist/WishlistForm";
 export default class Profile extends Component {
   state = {
     user: null,
     gifts: [],
     wishlistShow: true,
     wishlistDetail: false,
-    detailId: null
+    detailId: null,
+    showPopup: this.props.showPopup
+  };
+
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   };
 
   getGifts = () => {
+    console.log("ID", this.props.match.params);
     const userId = this.props.match.params.id;
 
     axios
@@ -35,6 +44,7 @@ export default class Profile extends Component {
     axios
       .get(`/api/users/profile/${userId}`)
       .then(response => {
+        console.log(response.data, "should work");
         this.setState({
           user: response.data
         });
@@ -53,7 +63,8 @@ export default class Profile extends Component {
     if (prevProps !== this.props) {
       this.setState({
         wishlistShow: true,
-        wishlistDetail: false
+        wishlistDetail: false,
+        showPopup: this.props.showPopup
       });
       this.getUserProfile();
       this.getGifts();
@@ -110,6 +121,12 @@ export default class Profile extends Component {
     return (
       <>
         <div className="profile-banner">
+          {this.state.showPopup && (
+            <WishlistForm
+              togglePopup={this.togglePopup}
+              getUserProfile={this.getUserProfile}
+            />
+          )}
           <h3>{user.username.toUpperCase()}</h3>
           {/* <p>member since {moment(user.created_at)}</p> */}
         </div>
@@ -173,17 +190,14 @@ export default class Profile extends Component {
                   </button>
                 </div>
                 {this.props.user._id === user._id && (
-                  <Link to="wishlist/new">
-                    <div className="profile-content">
-                      <div className="wishlist-card create-card">
-                        New Wishlist
-                        <img
-                          width="20px"
-                          src={require("../../assets/add.png")}
-                        />
-                      </div>
+                  // <Link to="wishlist/new">
+                  <div onClick={this.togglePopup} className="profile-content">
+                    <div className="wishlist-card create-card">
+                      New Wishlist
+                      <img width="20px" src={require("../../assets/add.png")} />
                     </div>
-                  </Link>
+                  </div>
+                  // </Link>
                 )}
                 <div className="profile-content">
                   {wishlistShow ? (

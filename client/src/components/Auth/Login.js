@@ -38,8 +38,11 @@ class Login extends Component {
     return (
       <div className="auth-wrapper">
         <div class="auth-container">
-          <div className="auth-info"></div>
+          <div className="auth-info">
+            <h1>Welcome Back</h1>
+          </div>
           <div className="auth-component">
+            <h1>Log In</h1>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
                 <Form.Label htmlFor="username">Username: </Form.Label>

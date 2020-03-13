@@ -66,6 +66,7 @@ class App extends React.Component {
                   {...props}
                   user={this.state.user}
                   deleteWishlist={this.deleteWishlist}
+                  showPopup={false}
                 />
               );
             } else {
@@ -109,11 +110,19 @@ class App extends React.Component {
         />
         <Route
           exact
-          path="/profile/wishlist/new"
+          path="/profile/wishlist/new/:id"
           // component={Projects}
           render={props => {
             if (this.state.user) {
-              return <WishlistForm {...props} user={this.state.user} />;
+              // return <WishlistForm {...props} user={this.state.user} />;
+              return (
+                <Profile
+                  {...props}
+                  user={this.state.user}
+                  deleteWishlist={this.deleteWishlist}
+                  showPopup={true}
+                />
+              );
             } else {
               return <Redirect to="/" />;
             }

@@ -27,7 +27,7 @@ const Navbar = props => {
               />
               Hello {props.user.username}
             </Link>
-            <Link to="/profile/wishlist/new">
+            <Link to={`/profile/wishlist/new/${props.user._id}`}>
               {" "}
               <img width="20px" src={require("../assets/pen.png")} />
             </Link>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { signup } from "./Auth";
+import { Link } from "react-router-dom";
 import { Alert, Form, Button } from "react-bootstrap";
 import "./auth.css";
 class Signup extends Component {
@@ -38,8 +39,16 @@ class Signup extends Component {
     return (
       <div className="auth-wrapper">
         <div class="auth-container">
-          <div className="auth-info"></div>
+          <div className="auth-info">
+            <h1>Welcome </h1>
+            <h5>Already have an account?</h5>
+            <Link to="/login">
+              <button className="button-active">Sign In</button>
+            </Link>
+          </div>
           <div class="auth-component">
+            <h1>Create Account</h1>
+
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
                 <Form.Label htmlFor="username">Username: </Form.Label>

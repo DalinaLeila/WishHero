@@ -12,8 +12,24 @@
 .auth-info {
   background-color: #77af9c;
   width: 20%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.auth-info button {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 5px;
+  width: 150px;
+  color: white;
+}
+
+.auth-info button:focus {
+  outline: none;
+}
 .auth-component {
   background-color: white;
   padding: 100px;
