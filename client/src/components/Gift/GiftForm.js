@@ -44,42 +44,47 @@ class GiftForm extends Component {
   };
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group>
-          <Form.Label htmlFor="name">Name: </Form.Label>
-          <Form.Control
-            type="text"
-            name="name"
-            id="name"
-            onChange={this.handleChange}
-            value={this.state.name}
-          />
-        </Form.Group>
+      <div className="popup" onClick={this.props.popupForm}>
+        <div className="popup_inner">
+          <h1>Add Gift</h1>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group>
+              <Form.Label htmlFor="name">Name: </Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                id="name"
+                onChange={this.handleChange}
+                value={this.state.name}
+              />
+            </Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor="details">Details: </Form.Label>
-          <Form.Control
-            type="text"
-            name="details"
-            id="details"
-            onChange={this.handleChange}
-            value={this.state.details}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="pice">Price: </Form.Label>
-          <Form.Control
-            type="number"
-            name="price"
-            id="price"
-            onChange={this.handleChange}
-            value={this.state.price}
-          />
-        </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="details">Details: </Form.Label>
+              <Form.Control
+                type="text"
+                name="details"
+                id="details"
+                onChange={this.handleChange}
+                value={this.state.details}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="pice">Price: </Form.Label>
+              <Form.Control
+                type="number"
+                name="price"
+                id="price"
+                onChange={this.handleChange}
+                value={this.state.price}
+              />
+            </Form.Group>
 
-        {/* upload image or post link */}
-        <Button type="submit">Add a Gift</Button>
-      </Form>
+            {/* upload image or post link */}
+            <Button type="submit">Add</Button>
+          </Form>
+        </div>
+      </div>
     );
   }
 }

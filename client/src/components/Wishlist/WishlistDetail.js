@@ -10,9 +10,15 @@ class WishlistDetail extends Component {
     wishlist: null,
     error: "",
     editForm: false,
-    addGift: false,
+    popupAddGift: false,
     name: "",
     description: ""
+  };
+
+  togglePopup = () => {
+    this.setState({
+      popupAddGift: !this.state.popupAddGift
+    });
   };
 
   getData = () => {
@@ -77,7 +83,7 @@ class WishlistDetail extends Component {
           // title: response.data.title,
           // description: response.data.description,
           editForm: false,
-          addGift: false
+          popupAddGift: false
         });
         this.props.getUserProfile();
       })
@@ -92,7 +98,7 @@ class WishlistDetail extends Component {
     } else if (this.state.wishlist === null) {
       return <div></div>;
     }
-    const { wishlist, addGift, editForm } = this.state;
+    const { wishlist, popupAddGift, editForm } = this.state;
     return (
       <div>
         <button onClick={() => this.props.toggleDetail()}>Back</button>
@@ -133,12 +139,13 @@ class WishlistDetail extends Component {
         )}
         {this.props.loggedIn._id === wishlist.owner && (
           <>
-            {addGift && (
+            {popupAddGift && (
               <GiftForm
                 getGifts={this.props.getGifts}
                 toggleForm={this.toggleForm}
                 wishlistId={this.state.wishlist._id}
                 getData={this.getData}
+                popupForm={this.togglePopup}
               />
             )}
           </>
@@ -146,7 +153,7 @@ class WishlistDetail extends Component {
         <div className="profile-content">
           {this.props.loggedIn._id === wishlist.owner && (
             <button
-              onClick={() => this.toggleForm("addGift")}
+              onClick={this.togglePopup}
               className="gift-card flex-add-gift"
             >
               <img width="30px" src={require("../../assets/plus.png")} />
