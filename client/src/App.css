@@ -35,10 +35,10 @@ button {
   margin: 5px;
 }
 
-h1,
+/* h1,
 h2 {
   margin-top: 20px;
-}
+} */
 
 .nav a:hover {
   text-decoration: none;

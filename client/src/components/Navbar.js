@@ -32,7 +32,7 @@ const Navbar = props => {
               <img width="20px" src={require("../assets/pen.png")} />
             </Link>
 
-            <Link to="/logout" onClick={() => handleLogout()}>
+            <Link to="/" onClick={() => handleLogout()}>
               Logout
             </Link>
           </>

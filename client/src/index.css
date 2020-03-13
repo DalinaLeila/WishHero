@@ -41,3 +41,41 @@ code {
   background-position: left center;
   outline: 0;
 }
+
+.landing-container {
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  background-color: #285943;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-button {
+  border-radius: 15px;
+  padding: 10px;
+  width: 200px;
+  font-weight: bold;
+}
+
+.start-button:focus {
+  outline: none;
+}
+
+.landing-content {
+  background-color: #6c9e8793;
+  padding: 100px;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+}
+.landing-content h1 {
+  color: #285943;
+  font-weight: bolder;
+}
+
+.landing-content ul li {
+  padding: 10px 0;
+}

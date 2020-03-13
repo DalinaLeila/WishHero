@@ -46,7 +46,9 @@ class App extends React.Component {
             if (this.state.user) {
               return <Home {...props} user={this.state.user} />;
             } else {
-              return <Redirect to="/" />;
+              return <Landing />;
+
+              // return <Redirect to="/" />;
             }
           }}
         />
