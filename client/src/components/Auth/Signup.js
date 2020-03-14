@@ -3,11 +3,13 @@ import { signup } from "./Auth";
 import { Link } from "react-router-dom";
 import { Alert, Form, Button } from "react-bootstrap";
 import "./auth.css";
+import axios from "axios";
 class Signup extends Component {
   state = {
     username: "",
     password: "",
-    error: ""
+    error: "",
+    profileImg: ""
   };
 
   handleChange = event => {
@@ -16,10 +18,35 @@ class Signup extends Component {
     });
   };
 
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    axios
+      .post("/api/upload/upload", uploadData)
+      .then(res => res.data)
+      .then(response => {
+        // console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({ profileImg: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
 
-    signup(this.state.username, this.state.password).then(data => {
+    signup(
+      this.state.username,
+      this.state.password,
+      this.state.profileImg
+    ).then(data => {
       if (data.message) {
         // handle errors
         this.setState({
@@ -68,6 +95,11 @@ class Signup extends Component {
                   id="password"
                   value={this.state.password}
                   onChange={this.handleChange}
+                />
+                <Form.Control
+                  type="file"
+                  id="profileImg"
+                  onChange={e => this.handleFileUpload(e)}
                 />
               </Form.Group>
               {this.state.error && (

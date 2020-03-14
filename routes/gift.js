@@ -20,17 +20,21 @@ router.get("/:id", (req, res) => {
 //post a gift
 router.post("/add/:id", (req, res) => {
   let wishlistId = req.params.id;
+  console.log(req.body, "BODY");
+  console.log(req.user);
   const {
     name,
     price,
     // quantity,
     //importance,
-    details
+    details,
+    imageUrl
   } = req.body;
   Gift.create({
     name,
     details,
     price,
+    imageUrl,
     // fulfilled: false,
     // importance: 0,
     wishlist: req.params.id,

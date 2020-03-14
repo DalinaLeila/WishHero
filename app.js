@@ -8,16 +8,10 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 
-// WHEN INTRODUCING USERS DO THIS:
-// INSTALL THESE DEPENDENCIES: passport-local, passport, bcryptjs, express-session
-// AND UN-COMMENT OUT FOLLOWING LINES:
-
 const session = require("express-session");
 const passport = require("passport");
-
+const cors = require("cors");
 require("./configs/passport");
-
-// IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
   .connect("mongodb://localhost/project-management-server", {
@@ -97,5 +91,9 @@ app.use("/api/gift", giftRoutes);
 
 const wishlistRoutes = require("./routes/wishlist");
 app.use("/api/wishlist", wishlistRoutes);
+
+const uploadRoutes = require("./routes/fileUpload");
+
+app.use("/api/upload", uploadRoutes);
 
 module.exports = app;

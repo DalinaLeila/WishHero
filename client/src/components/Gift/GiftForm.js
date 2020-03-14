@@ -9,42 +9,63 @@ class GiftForm extends Component {
     price: 0,
     quantity: 1,
     giftLink: "",
-    giftImg: "",
-    importance: 0
+    imageUrl: "",
+    importance: 0,
+    loading: false
   };
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    axios
+      .post("/api/upload/upload", uploadData)
+      .then(res => res.data)
+      .then(response => {
+        // console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({ imageUrl: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
     if (!this.state.name || !this.state.details || !this.state.price) return;
     axios
-      .post(`/api/gift/add/${this.props.wishlistId}`, {
-        name: this.state.name,
-        details: this.state.details,
-        price: this.state.price
-      })
-      .then(response => {
+      .post(`/api/gift/add/${this.props.wishlistId}`, this.state)
+      .then(res => res.data)
+      .then(res => {
+        console.log("added: ", res);
         this.props.getData();
         this.setState({
           name: "",
           details: "",
-          price: 0
+          price: 0,
+          imageUrl: ""
         });
-        this.props.toggleForm("addGift");
+        this.props.popupForm("popupAddGift");
         this.props.getGifts();
+        // here you would redirect to some other page
       })
       .catch(err => {
-        console.log(err);
+        console.log("Error while adding the thing: ", err);
       });
   };
   render() {
     return (
-      <div className="popup" onClick={this.props.popupForm}>
+      <div className="popup">
         <div className="popup_inner">
           <h1>Add Gift</h1>
           <Form onSubmit={this.handleSubmit}>
@@ -77,6 +98,10 @@ class GiftForm extends Component {
                 id="price"
                 onChange={this.handleChange}
                 value={this.state.price}
+              />
+              <Form.Control
+                type="file"
+                onChange={e => this.handleFileUpload(e)}
               />
             </Form.Group>
 

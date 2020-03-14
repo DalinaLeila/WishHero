@@ -59,7 +59,7 @@ class WishlistForm extends Component {
 
   render() {
     return (
-      <div className="popup" onClick={this.props.togglePopup}>
+      <div className="popup">
         <div className="popup_inner">
           <h6 onClick={this.props.togglePopup}>X</h6>
           <Form onSubmit={this.handleSubmit}>
