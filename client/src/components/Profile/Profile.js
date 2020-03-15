@@ -7,6 +7,8 @@ import moment from "moment";
 import Gift from "../Gift/Gift";
 import WishlistDetail from "../Wishlist/WishlistDetail";
 import WishlistForm from "../Wishlist/WishlistForm";
+import { Form } from "react-bootstrap";
+
 export default class Profile extends Component {
   state = {
     user: null,
@@ -14,9 +16,17 @@ export default class Profile extends Component {
     wishlistShow: true,
     wishlistDetail: false,
     detailId: null,
-    showPopup: this.props.showPopup
+    showPopup: this.props.showPopup,
+    editProfile: false,
+    about: ""
   };
 
+  handleChange = event => {
+    console.log("hi", event.target.name);
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup
@@ -47,6 +57,7 @@ export default class Profile extends Component {
         console.log(response.data, "should work");
         this.setState({
           user: response.data
+          // about: response.data.about
         });
       })
       .catch(err => {
@@ -114,8 +125,32 @@ export default class Profile extends Component {
       });
     }
   };
+
+  updateProfile = e => {
+    e.preventDefault();
+    axios
+      .put("/api/users/update", { about: this.state.about })
+      .then(response => {
+        this.setState({
+          editProfile: false,
+          user: response.data
+        });
+      });
+  };
+
+  editProfile = () => {
+    this.setState({
+      editProfile: !this.state.editProfile
+    });
+  };
   render() {
-    const { user, gifts, wishlistDetail, wishlistShow } = this.state;
+    const {
+      user,
+      editProfile,
+      gifts,
+      wishlistDetail,
+      wishlistShow
+    } = this.state;
     if (!user) return <div></div>;
 
     return (
@@ -132,8 +167,44 @@ export default class Profile extends Component {
         </div>
         <div className="profile-info">
           <div>
-            <img width="180px" height="180px" src={user.profileImg} alt="" />
-
+            {editProfile ? (
+              <form onSubmit={this.updateProfile}>
+                {/* <input type="file" name="profileImg" id="" /> */}
+                <input
+                  type="text"
+                  name="about"
+                  value={this.state.about}
+                  onChange={this.handleChange}
+                />
+                <button>Submit</button>
+              </form>
+            ) : (
+              <>
+                <img
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: "100px",
+                    border: "2px solid white"
+                  }}
+                  width="180px"
+                  height="180px"
+                  src={user.profileImg}
+                  alt=""
+                />
+                {this.props.user._id === user._id && (
+                  <img
+                    width="20px"
+                    height="25px"
+                    src={require("../../assets/edit.png")}
+                    onClick={this.editProfile}
+                  />
+                )}
+                <div>
+                  About me
+                  <p>{user.about}</p>
+                </div>
+              </>
+            )}
             {this.props.user._id !== user._id && (
               <button
                 className="button-active"

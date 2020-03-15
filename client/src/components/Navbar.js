@@ -13,7 +13,16 @@ const Navbar = props => {
   return (
     <Nav className="nav navbar">
       <div>
-        <Link to="/">LOGO</Link>
+        <Link to="/">
+          <img
+            width="30px"
+            height="30px"
+            style={{ marginRight: "10px" }}
+            src={require("../assets/star.png")}
+            alt=""
+          />
+          WishHero
+        </Link>
       </div>
       <div className="flex">
         {props.user ? (
@@ -23,6 +32,7 @@ const Navbar = props => {
                 className="profile-pic-nav"
                 width="30px"
                 height="30px"
+                style={{ objectFit: "cover" }}
                 src={props.user.profileImg}
                 alt=""
               />

@@ -110,7 +110,7 @@ class WishlistDetail extends Component {
 
         {editForm && this.props.loggedIn._id === wishlist.owner ? (
           <Form onSubmit={this.handleSubmit}>
-            <h2>Edit form</h2>
+            <h2>Edit Wishlist</h2>
             <Form.Group>
               <Form.Label htmlFor="name">name: </Form.Label>
               <Form.Control
@@ -135,11 +135,22 @@ class WishlistDetail extends Component {
           </Form>
         ) : (
           <>
-            {this.props.loggedIn._id === wishlist.owner && (
-              <div onClick={() => this.toggleForm("editForm")}>Edit</div>
-            )}
-            <h1>{wishlist.name}</h1>
-            <p>{wishlist.description}</p>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div>
+                <h1>{wishlist.name}</h1>
+                <p>{wishlist.description}</p>
+              </div>
+              {this.props.loggedIn._id === wishlist.owner && (
+                <img
+                  width="20px"
+                  height="25px"
+                  className="pointer button-active"
+                  style={{ marginLeft: "10px" }}
+                  src={require("../../assets/edit.png")}
+                  onClick={() => this.toggleForm("editForm")}
+                />
+              )}
+            </div>
           </>
         )}
         {this.props.loggedIn._id === wishlist.owner && (

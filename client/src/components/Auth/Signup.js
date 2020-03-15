@@ -96,6 +96,7 @@ class Signup extends Component {
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
+
                 <Form.Control
                   type="file"
                   id="profileImg"

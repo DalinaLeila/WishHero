@@ -62,8 +62,6 @@
 }
 
 .profile-info img {
-  border: 2px solid white;
-  border-radius: 100px;
   position: relative;
   /* width: 15%; */
   margin-bottom: 20px;

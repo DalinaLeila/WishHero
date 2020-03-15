@@ -11,6 +11,7 @@ const userSchema = new Schema(
       default:
         "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
     },
+    about: String,
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }],
     wishlists: [

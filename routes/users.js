@@ -55,7 +55,6 @@ router.get("/profile/:id", (req, res, next) => {
 });
 
 router.put("/follow/:id", (req, res, next) => {
-  //this is only for following - still need to do pull for unfollow
   const profileId = req.params.id;
   User.findById(profileId).then(user => {
     if (user.followers.includes(req.user._id)) {
@@ -94,4 +93,15 @@ router.put("/follow/:id", (req, res, next) => {
   });
 });
 
+router.put("/update", (req, res, next) => {
+  const about = req.body.about;
+
+  const profileId = req.user._id;
+  User.findByIdAndUpdate(profileId, { about }, { new: true })
+    .populate("wishlists")
+    .populate("savedGifts")
+    .then(user => {
+      res.json(user);
+    });
+});
 module.exports = router;

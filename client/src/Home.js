@@ -55,6 +55,7 @@ class Home extends Component {
               <img
                 width="180px"
                 height="180px"
+                style={{ objectFit: "cover" }}
                 src={user.profileImg}
                 alt="user-profile-img"
               />
