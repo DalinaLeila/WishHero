@@ -27,12 +27,12 @@ router.post("/add/:id", (req, res) => {
     price,
     // quantity,
     //importance,
-    details,
+    giftLink,
     imageUrl
   } = req.body;
   Gift.create({
     name,
-    details,
+    giftLink,
     price,
     imageUrl,
     // fulfilled: false,
@@ -59,7 +59,7 @@ router.put("/:id", (req, res, next) => {
   const giftId = req.params.id;
   const {
     name,
-    details,
+
     price,
     quantity,
     giftLink,
@@ -73,7 +73,7 @@ router.put("/:id", (req, res, next) => {
     giftId,
     {
       name,
-      details,
+
       price,
       quantity,
       giftLink,

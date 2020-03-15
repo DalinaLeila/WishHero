@@ -132,7 +132,7 @@ export default class Profile extends Component {
         </div>
         <div className="profile-info">
           <div>
-            <img width="50%" src={user.profileImg} alt="" />
+            <img width="180px" height="180px" src={user.profileImg} alt="" />
 
             {this.props.user._id !== user._id && (
               <button
@@ -192,7 +192,7 @@ export default class Profile extends Component {
                 {this.props.user._id === user._id && (
                   // <Link to="wishlist/new">
                   <div onClick={this.togglePopup} className="profile-content">
-                    <div className="wishlist-card create-card">
+                    <div className="pointer wishlist-card  button-active create-card">
                       New Wishlist
                       <img width="20px" src={require("../../assets/add.png")} />
                     </div>

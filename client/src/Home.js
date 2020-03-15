@@ -52,7 +52,12 @@ class Home extends Component {
         <div>
           <Link key={user._id} to={`/profile/${user._id}`}>
             <div>
-              <img width="50%" src={user.profileImg} alt="user-profile-img" />
+              <img
+                width="180px"
+                height="180px"
+                src={user.profileImg}
+                alt="user-profile-img"
+              />
               <h5>{user.username}</h5>
             </div>
           </Link>

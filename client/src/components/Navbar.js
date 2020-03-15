@@ -22,6 +22,7 @@ const Navbar = props => {
               <img
                 className="profile-pic-nav"
                 width="30px"
+                height="30px"
                 src={props.user.profileImg}
                 alt=""
               />

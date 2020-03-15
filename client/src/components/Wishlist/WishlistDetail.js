@@ -101,7 +101,12 @@ class WishlistDetail extends Component {
     const { wishlist, popupAddGift, editForm } = this.state;
     return (
       <div>
-        <button onClick={() => this.props.toggleDetail()}>Back</button>
+        <img
+          className="back pointer button-active"
+          width="30px"
+          src={require("../../assets/left.png")}
+          onClick={() => this.props.toggleDetail()}
+        />
 
         {editForm && this.props.loggedIn._id === wishlist.owner ? (
           <Form onSubmit={this.handleSubmit}>
@@ -154,7 +159,7 @@ class WishlistDetail extends Component {
           {this.props.loggedIn._id === wishlist.owner && (
             <button
               onClick={this.togglePopup}
-              className="gift-card flex-add-gift"
+              className="gift-card flex-add-gift button-active pointer"
             >
               <img width="30px" src={require("../../assets/plus.png")} />
               Add Gift

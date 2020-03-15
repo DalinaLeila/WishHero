@@ -133,10 +133,18 @@
   -webkit-box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
   box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
   position: relative;
-  width: 20%;
-  height: 130px;
+  /* width: 20%;
+  height: 130px; */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 250px;
   margin-right: 2.33333%;
   margin-bottom: 1.65rem;
+}
+
+.gift-img {
+  border-radius: 100px;
 }
 
 .flex-add-gift {
@@ -171,4 +179,13 @@
   bottom: 25%;
   margin: auto;
   background: white;
+}
+
+.back {
+  float: left;
+  margin-top: 20px;
+}
+
+.pointer:hover {
+  cursor: pointer;
 }

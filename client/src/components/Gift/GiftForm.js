@@ -5,7 +5,7 @@ import { Form, Button } from "react-bootstrap";
 class GiftForm extends Component {
   state = {
     name: "",
-    details: "",
+    giftLink: "",
     price: 0,
     quantity: 1,
     giftLink: "",
@@ -42,7 +42,7 @@ class GiftForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (!this.state.name || !this.state.details || !this.state.price) return;
+    if (!this.state.name || !this.state.giftLink || !this.state.price) return;
     axios
       .post(`/api/gift/add/${this.props.wishlistId}`, this.state)
       .then(res => res.data)
@@ -51,7 +51,7 @@ class GiftForm extends Component {
         this.props.getData();
         this.setState({
           name: "",
-          details: "",
+          giftLink: "",
           price: 0,
           imageUrl: ""
         });
@@ -67,6 +67,9 @@ class GiftForm extends Component {
     return (
       <div className="popup">
         <div className="popup_inner">
+          <h6 className="button-active pointer" onClick={this.props.popupForm}>
+            X
+          </h6>
           <h1>Add Gift</h1>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group>
@@ -81,13 +84,13 @@ class GiftForm extends Component {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label htmlFor="details">Details: </Form.Label>
+              <Form.Label htmlFor="giftLink">Link: </Form.Label>
               <Form.Control
                 type="text"
-                name="details"
-                id="details"
+                name="giftLink"
+                id="giftLink"
                 onChange={this.handleChange}
-                value={this.state.details}
+                value={this.state.giftLink}
               />
             </Form.Group>
             <Form.Group>

@@ -5,11 +5,11 @@ import moment from "moment";
 const Wishlist = props => {
   return props.user.wishlists.map(wishlist => {
     return (
-      <div className="wishlist-card">
-        <div
-          className="detail-card"
-          onClick={() => props.toggleDetail(wishlist._id)}
-        >
+      <div
+        onClick={() => props.toggleDetail(wishlist._id)}
+        className=" pointer button-active wishlist-card"
+      >
+        <div className="detail-card">
           {/* <div className="gift-num">{wishlist.gifts.length}</div> */}
           <h6 className="wishlist-name">{wishlist.name}</h6>
           <h6> {moment(wishlist.eventDate).fromNow()}</h6>
@@ -17,6 +17,7 @@ const Wishlist = props => {
         </div>
         {props.loggedIn._id === props.user._id && (
           <img
+            className="pointer button-active"
             width="20px"
             src={require("../../assets/bin.png")}
             onClick={() => props.deleteWishlist(wishlist._id)}

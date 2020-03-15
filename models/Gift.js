@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const giftSchema = new Schema({
   name: String,
-  details: String,
-  price: String,
+  // details: String,
+  price: Number,
   imageUrl: { type: String },
   // quantity: Number,
-  // giftLink: String,
+  giftLink: String,
   // fulfilled: Boolean,
   // importance: { type: Number, min: 1, max: 5 },
   wishlist: {

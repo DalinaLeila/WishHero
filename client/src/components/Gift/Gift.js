@@ -9,10 +9,20 @@ const Gift = props => {
     console.log(gift);
     return (
       <div className="gift-card">
-        <h6 className="gift-name">{gift.name}</h6>
-        <img width="50px" src={gift.imageUrl} />
+        <a target="_blank" href={gift.giftLink}>
+          <h6 className="gift-name">{gift.name}</h6>
+        </a>
+        <h3>{gift.price}€</h3>
+
+        <img
+          className="gift-img"
+          width="200px"
+          height="200px"
+          src={gift.imageUrl || require("../../assets/gift.png")}
+        />
         {props.loggedIn._id === gift.owner && (
           <img
+            className="pointer button-active"
             width="20px"
             src={require("../../assets/bin.png")}
             onClick={() => props.handleDelete(gift._id)}
