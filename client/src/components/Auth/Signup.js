@@ -96,8 +96,12 @@ class Signup extends Component {
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
+              </Form.Group>
 
+              <Form.Group>
+                <Form.Label htmlFor="profilePic">Profile Picture: </Form.Label>
                 <Form.Control
+                  name="profilePic"
                   type="file"
                   id="profileImg"
                   onChange={e => this.handleFileUpload(e)}

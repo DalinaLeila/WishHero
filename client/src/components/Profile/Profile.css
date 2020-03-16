@@ -73,10 +73,26 @@
   color: black;
   width: 200px;
   padding: 10px;
+
+  margin-bottom: 20px;
 }
 
 .profile-info button:focus {
   outline: none;
+}
+
+.profile-info button:hover {
+  background-color: white;
+}
+.about {
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.418);
+}
+.about h3 {
+  font-weight: bold;
 }
 .gift-num {
   color: white;

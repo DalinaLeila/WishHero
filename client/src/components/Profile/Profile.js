@@ -167,30 +167,42 @@ export default class Profile extends Component {
         </div>
         <div className="profile-info">
           <div>
+            <img
+              style={{
+                objectFit: "cover",
+                borderRadius: "100px",
+                border: "2px solid white"
+              }}
+              width="180px"
+              height="180px"
+              src={user.profileImg}
+              alt=""
+            />
             {editProfile ? (
               <form onSubmit={this.updateProfile}>
                 {/* <input type="file" name="profileImg" id="" /> */}
+                <label htmlFor="about">Write something about you</label>
                 <input
                   type="text"
                   name="about"
                   value={this.state.about}
                   onChange={this.handleChange}
                 />
-                <button>Submit</button>
+                <button className="button-active">Submit</button>
               </form>
             ) : (
               <>
-                <img
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "100px",
-                    border: "2px solid white"
-                  }}
-                  width="180px"
-                  height="180px"
-                  src={user.profileImg}
-                  alt=""
-                />
+                {this.props.user._id !== user._id && (
+                  <button
+                    className="button-active follow"
+                    onClick={() => this.handleFollow(user._id)}
+                  >
+                    {user.followers.includes(this.props.user._id)
+                      ? "Unfollow "
+                      : "Follow "}
+                    {user.username}
+                  </button>
+                )}
                 {this.props.user._id === user._id && (
                   <img
                     width="20px"
@@ -199,22 +211,11 @@ export default class Profile extends Component {
                     onClick={this.editProfile}
                   />
                 )}
-                <div>
-                  About me
+                <div className="about">
+                  <h5>About me</h5>
                   <p>{user.about}</p>
                 </div>
               </>
-            )}
-            {this.props.user._id !== user._id && (
-              <button
-                className="button-active"
-                onClick={() => this.handleFollow(user._id)}
-              >
-                {user.followers.includes(this.props.user._id)
-                  ? "Unfollow "
-                  : "Follow "}
-                {user.username}
-              </button>
             )}
           </div>
           <div>
