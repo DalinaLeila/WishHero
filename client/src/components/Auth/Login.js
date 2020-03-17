@@ -43,7 +43,7 @@ class Login extends Component {
           </div>
           <div className="auth-component">
             <h1>Log In</h1>
-            <Form onSubmit={this.handleSubmit}>
+            <Form className="form" onSubmit={this.handleSubmit}>
               <Form.Group>
                 <Form.Label htmlFor="username">Username: </Form.Label>
                 <Form.Control

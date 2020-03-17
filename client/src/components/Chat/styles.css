@@ -110,7 +110,7 @@ small {
   font-size: 0.6rem;
 }
 
-form {
+.form {
   display: flex;
   justify-content: space-between;
 }

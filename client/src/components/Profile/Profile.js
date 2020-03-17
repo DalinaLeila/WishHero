@@ -181,7 +181,7 @@ export default class Profile extends Component {
               getUserProfile={this.getUserProfile}
             />
           )}
-          <div>
+          <div className="profile-message">
             <h3>{user.username.toUpperCase()}</h3>
             {/* <p>member since {moment(user.created_at)}</p> */}
             {this.props.user._id !== user._id && (

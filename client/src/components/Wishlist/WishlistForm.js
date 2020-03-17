@@ -26,7 +26,6 @@ class WishlistForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    // axios.post('http://localhost:5555/api/projects')
     axios
       .post("/api/wishlist", {
         name: this.state.name,
@@ -47,7 +46,7 @@ class WishlistForm extends Component {
           private: true
         });
         this.props.togglePopup();
-        // this.props.history.push(`/profile/${this.props.user._id}`);
+
         this.props.getUserProfile();
       })
       .catch(err => {
@@ -55,14 +54,12 @@ class WishlistForm extends Component {
       });
   };
 
-  // headerImg: { type: String, defualt: "../client/src/assets/pic.jpg" },
-
   render() {
     return (
       <div className="popup">
         <div className="popup_inner">
           <h6 onClick={this.props.togglePopup}>X</h6>
-          <Form onSubmit={this.handleSubmit}>
+          <div onSubmit={this.handleSubmit}>
             <Form.Group id="formGridCheckbox">
               <Form.Check
                 type="checkbox"
@@ -105,7 +102,7 @@ class WishlistForm extends Component {
 
             {/* upload image or post link */}
             <Button type="submit">Create a Wishlist</Button>
-          </Form>
+          </div>
         </div>
       </div>
     );

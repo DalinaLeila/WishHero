@@ -76,7 +76,7 @@ class Signup extends Component {
           <div class="auth-component">
             <h1>Create Account</h1>
 
-            <Form onSubmit={this.handleSubmit}>
+            <Form className="form" onSubmit={this.handleSubmit}>
               <Form.Group>
                 <Form.Label htmlFor="username">Username: </Form.Label>
                 <Form.Control
