@@ -7,7 +7,8 @@ import Profile from "./components/Profile/Profile";
 import Wishlist from "./components/Wishlist/Wishlist";
 import WishlistForm from "./components/Wishlist/WishlistForm";
 import Landing from "./Landing";
-
+import Inbox from "./components/Chat/Inbox";
+import InboxChat from "./components/Chat/InboxChat";
 import WishlistDetail from "./components/Wishlist/WishlistDetail";
 // import GiftDetail from "./components/GiftDetail";
 import Signup from "./components/Auth/Signup";
@@ -139,6 +140,28 @@ class App extends React.Component {
           path="/login"
           render={props => <Login {...props} setUser={this.setUser} />} //passing all the router props and the user props
         />
+        <div className="chatPage clear">
+          <Route
+            path="/inbox"
+            render={props => {
+              if (this.state.user) {
+                return <Inbox {...props} user={this.state.user} />;
+              } else {
+                return <Redirect to="/" />;
+              }
+            }}
+          />
+          <Route
+            path="/inbox/:id"
+            render={props => {
+              if (this.state.user) {
+                return <InboxChat {...props} user={this.state.user} />;
+              } else {
+                return <Redirect to="/" />;
+              }
+            }}
+          />
+        </div>
       </div>
     );
   }

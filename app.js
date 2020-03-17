@@ -92,7 +92,9 @@ const wishlistRoutes = require("./routes/wishlist");
 app.use("/api/wishlist", wishlistRoutes);
 
 const uploadRoutes = require("./routes/fileUpload");
-
 app.use("/api/upload", uploadRoutes);
+
+const chatRoutes = require("./routes/chat");
+app.use("/api/chat", chatRoutes);
 
 module.exports = app;

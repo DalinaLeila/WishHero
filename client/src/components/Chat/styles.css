@@ -1,0 +1,141 @@
+.users {
+  width: 300px;
+  border: 1px solid white;
+  height: 100vh;
+  padding: 5px;
+  background-color: #285943;
+}
+.message h5 {
+  color: white;
+}
+.users img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-size: contain;
+  margin-right: 20px;
+}
+
+.users a {
+  display: flex;
+}
+
+.users a:hover {
+  color: white;
+  background-color: #77af9c;
+}
+
+.message:hover {
+  text-decoration: none !important;
+}
+
+.message {
+  display: flex;
+}
+
+.chatContainer {
+  height: 100vh;
+  /* width: 500px;
+  border: 1px solid grey;
+  background-color: lightblue; */
+  flex: 1;
+}
+
+.rightSide {
+  margin-right: 50px;
+  text-align: right;
+  position: relative;
+}
+.rightSide:before {
+  content: "";
+  position: absolute;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent;
+  top: 7px;
+  right: 0;
+  transform: rotate(90deg);
+}
+.leftSide {
+  margin-left: 50px;
+
+  text-align: left;
+  position: relative;
+}
+.leftSide:before {
+  content: "";
+  position: absolute;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent;
+  top: 7px;
+  transform: rotate(-90deg);
+}
+.main {
+  border: 2px solid #285943;
+  background-color: #77af9c;
+  height: 100vh;
+}
+.container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  background-color: #77af9c;
+  border-radius: 0;
+}
+.chat {
+  border: 2px solid #285943;
+  background-color: #9bc7b8;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  overflow: scroll;
+  height: 80vh;
+  padding-bottom: 10px;
+}
+.chat-bubble p {
+  display: inline-block;
+  padding: 7px;
+  margin: 3px 12px;
+  border-radius: 4px 0 4px 4px;
+  background-color: white;
+  color: #285943;
+}
+small {
+  display: block;
+  margin: 0 15px 8px 15px;
+  font-size: 0.6rem;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+}
+textarea {
+  flex: 1;
+  height: 50px;
+  width: 500px;
+  border-radius: 10px;
+  border: 1px solid #285943;
+}
+
+.sendButton {
+  height: 50px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  color: white;
+  background-color: #285943;
+  border: 1px solid white;
+}
+.sendButton:hover {
+  height: 50px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  background-color: #77af9c;
+}

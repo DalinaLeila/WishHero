@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Wishlist from "../Wishlist/Wishlist";
 import axios from "axios";
 import "./Profile.css";
@@ -18,11 +18,29 @@ export default class Profile extends Component {
     detailId: null,
     showPopup: this.props.showPopup,
     editProfile: false,
-    about: ""
+    about: "",
+    chatId: "",
+    activeUser: this.props.user
+  };
+
+  getChat = () => {
+    const profileUser = this.state.user;
+    axios
+      .post("/api/chat", {
+        profileUser
+      })
+      .then(response => {
+        console.log("find/create chat for: ", response.data);
+        this.setState({
+          chatId: response.data._id
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   handleChange = event => {
-    console.log("hi", event.target.name);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -34,7 +52,6 @@ export default class Profile extends Component {
   };
 
   getGifts = () => {
-    console.log("ID", this.props.match.params);
     const userId = this.props.match.params.id;
 
     axios
@@ -152,7 +169,9 @@ export default class Profile extends Component {
       wishlistShow
     } = this.state;
     if (!user) return <div></div>;
-
+    if (this.state.chatId) {
+      return <Redirect to={`/inbox/${this.state.chatId}`} />;
+    }
     return (
       <>
         <div className="profile-banner">
@@ -162,8 +181,15 @@ export default class Profile extends Component {
               getUserProfile={this.getUserProfile}
             />
           )}
-          <h3>{user.username.toUpperCase()}</h3>
-          {/* <p>member since {moment(user.created_at)}</p> */}
+          <div>
+            <h3>{user.username.toUpperCase()}</h3>
+            {/* <p>member since {moment(user.created_at)}</p> */}
+            {this.props.user._id !== user._id && (
+              <button onClick={this.getChat} className="button-active">
+                Message
+              </button>
+            )}
+          </div>
         </div>
         <div className="profile-info">
           <div>
