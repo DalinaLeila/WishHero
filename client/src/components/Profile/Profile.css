@@ -202,7 +202,6 @@
   left: 25%;
   right: 25%;
   top: 25%;
-  bottom: 25%;
   margin: auto;
   background: white;
 }
@@ -214,4 +213,11 @@
 
 .pointer:hover {
   cursor: pointer;
+}
+
+.form-button {
+  background-color: #285943;
+  padding: 8px;
+  color: white;
+  border-radius: 10px;
 }

@@ -109,7 +109,9 @@ class GiftForm extends Component {
             </Form.Group>
 
             {/* upload image or post link */}
-            <Button type="submit">Add</Button>
+            <button className="button-active form-button" type="submit">
+              Add
+            </button>
           </Form>
         </div>
       </div>

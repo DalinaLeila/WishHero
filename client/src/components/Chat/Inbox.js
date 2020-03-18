@@ -31,7 +31,7 @@ export class Inbox extends Component {
     const inbox = this.state.inboxItems;
     if (inbox.length === 0) {
       return (
-        <div className="empty">
+        <div className="emptys">
           <h3>Your inbox is empty</h3>
           <p>Connect with people through their profiles</p>
         </div>

@@ -59,7 +59,7 @@ class WishlistForm extends Component {
       <div className="popup">
         <div className="popup_inner">
           <h6 onClick={this.props.togglePopup}>X</h6>
-          <div onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <Form.Group id="formGridCheckbox">
               <Form.Check
                 type="checkbox"
@@ -101,8 +101,10 @@ class WishlistForm extends Component {
             </Form.Group>
 
             {/* upload image or post link */}
-            <Button type="submit">Create a Wishlist</Button>
-          </div>
+            <button className="form-button button-active" type="submit">
+              Create a Wishlist
+            </button>
+          </form>
         </div>
       </div>
     );
