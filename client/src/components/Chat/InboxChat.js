@@ -102,7 +102,7 @@ export class InboxChat extends Component {
                 );
               })}
             </div>
-            <form onSubmit={this.submitForm}>
+            <form className="chat-form" onSubmit={this.submitForm}>
               <textarea
                 type="text"
                 name="newMessage"

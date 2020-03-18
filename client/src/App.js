@@ -140,7 +140,7 @@ class App extends React.Component {
           path="/login"
           render={props => <Login {...props} setUser={this.setUser} />} //passing all the router props and the user props
         />
-        <div className="chatPage clear">
+        <div className="chatPage">
           <Route
             path="/inbox"
             render={props => {

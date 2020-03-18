@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import "./styles.css";
+
 export class Inbox extends Component {
   state = {
     activeUser: this.props.user,
@@ -37,8 +38,9 @@ export class Inbox extends Component {
       );
     } else {
       return (
-        <div className="main">
+        <div className="user-list">
           <div className="users">
+            <h2>Chats</h2>
             {inbox.map(chat => {
               return chat.users.map(user => {
                 return (
@@ -47,9 +49,8 @@ export class Inbox extends Component {
                       key={chat._id}
                       to={`/inbox/${chat._id}`}
                       otherUser={user}
-                      style={{ border: "1px solid black" }}
                     >
-                      <div>
+                      <div className="img-container">
                         <img src={user.profileImg} alt={user.username} />
                       </div>
                       <div className="message">
@@ -59,7 +60,7 @@ export class Inbox extends Component {
                             {chat.messages.length > 0
                               ? chat.messages[
                                   chat.messages.length - 1
-                                ].created_at.slice(11, 16) + ":"
+                                ].created_at.slice(11, 16)
                               : ""}
                           </small>
                           <small>
