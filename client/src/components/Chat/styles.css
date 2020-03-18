@@ -172,3 +172,9 @@ textarea:focus {
   justify-content: center;
   display: flex;
 }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
