@@ -42,24 +42,18 @@ class App extends React.Component {
         <Route
           exact
           path="/"
-          // component={Projects}
           render={props => {
             if (this.state.user) {
               return <Home {...props} user={this.state.user} />;
             } else {
               return <Landing />;
-
-              // return <Redirect to="/" />;
             }
           }}
         />
 
-        {/* <Route exact path="/" component={Test} /> */}
-
         <Route
           exact
           path="/profile/:id"
-          // component={Projects}
           render={props => {
             if (this.state.user) {
               return (
@@ -76,12 +70,9 @@ class App extends React.Component {
           }}
         />
 
-        {/* wishlist */}
-
         <Route
           exact
           path="/wishlists/:id"
-          // component={Projects}
           render={props => {
             if (this.state.user) {
               return (
@@ -100,7 +91,6 @@ class App extends React.Component {
         <Route
           exact
           path="/wishlists"
-          // component={Projects}
           render={props => {
             if (this.state.user) {
               return <Wishlist {...props} />;
@@ -112,10 +102,8 @@ class App extends React.Component {
         <Route
           exact
           path="/profile/wishlist/new/:id"
-          // component={Projects}
           render={props => {
             if (this.state.user) {
-              // return <WishlistForm {...props} user={this.state.user} />;
               return (
                 <Profile
                   {...props}
@@ -133,12 +121,12 @@ class App extends React.Component {
         <Route
           exact
           path="/signup"
-          render={props => <Signup {...props} setUser={this.setUser} />} //passing all the router props and the user props
+          render={props => <Signup {...props} setUser={this.setUser} />}
         />
         <Route
           exact
           path="/login"
-          render={props => <Login {...props} setUser={this.setUser} />} //passing all the router props and the user props
+          render={props => <Login {...props} setUser={this.setUser} />}
         />
         <div className="chatPage">
           <Route

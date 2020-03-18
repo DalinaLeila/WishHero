@@ -197,7 +197,8 @@ export default class Profile extends Component {
               style={{
                 objectFit: "cover",
                 borderRadius: "100px",
-                border: "2px solid white"
+                border: "2px solid white",
+                marginBottom: "20px"
               }}
               width="180px"
               height="180px"
@@ -229,15 +230,16 @@ export default class Profile extends Component {
                     {user.username}
                   </button>
                 )}
-                {this.props.user._id === user._id && (
-                  <img
-                    width="20px"
-                    height="25px"
-                    src={require("../../assets/edit.png")}
-                    onClick={this.editProfile}
-                  />
-                )}
                 <div className="about">
+                  {this.props.user._id === user._id && (
+                    <img
+                      style={{ float: "right" }}
+                      width="20px"
+                      height="25px"
+                      src={require("../../assets/edit.png")}
+                      onClick={this.editProfile}
+                    />
+                  )}
                   <h5>About me</h5>
                   <p>{user.about}</p>
                 </div>

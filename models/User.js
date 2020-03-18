@@ -7,9 +7,7 @@ const userSchema = new Schema(
     password: String,
 
     profileImg: {
-      type: String,
-      default:
-        "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
+      type: String
     },
     about: String,
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],

@@ -45,7 +45,7 @@ code {
 .landing-container {
   color: white;
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   /* background-image: url("./assets/landing.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -54,14 +54,36 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+.landing-container div {
+  margin-top: 100px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landing-container h1 {
+  font-size: 5em;
+}
+.landing-container p {
+  width: 600px;
 }
 
 .start-button {
-  border-radius: 15px;
-  padding: 10px;
-  width: 200px;
-  font-weight: bold;
+  height: 48px;
+  width: 164px;
+  cursor: pointer;
+  background: none white;
+  border: 1px none #285943;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+  transition: background 200ms ease-in-out 0s;
+  padding: 5px;
 }
 
 .start-button:focus {
@@ -82,4 +104,10 @@ code {
 
 .landing-content ul li {
   padding: 10px 0;
+}
+
+.white {
+  height: 30vh;
+  width: 100vw;
+  background-color: white;
 }
