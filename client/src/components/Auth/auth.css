@@ -28,6 +28,7 @@
 .auth-component {
   background-color: white;
   padding: 100px;
+  text-align: center;
 }
 
 .button {
@@ -70,6 +71,7 @@ input:focus {
     height: 600px;
     padding: 10px;
     display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
   }

@@ -207,11 +207,6 @@
     outline: none;
   }
 
-  .back {
-    float: left;
-    margin-top: 20px;
-  }
-
   .pointer:hover {
     cursor: pointer;
   }
@@ -225,6 +220,17 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+  .back {
+    float: left;
+    margin-top: 20px;
+  }
+  .about p {
+    width: 300px;
+  }
+
+  .profile-wrapper {
+    margin-top: 20px;
+  }
   .button-wrapper {
     /* width: 100px; */
     padding: 10px;
@@ -271,12 +277,6 @@
   }
 
   .gift-card {
-    /* position: relative; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    padding: 10px;
-    /* width: 250px; */
-    /* margin-right: 2.33333%; */
     margin-bottom: 10px;
     width: 100%;
   }
@@ -298,6 +298,8 @@
   }
 
   .back {
+    float: left;
+    margin: 20px;
   }
 
   .pointer:hover {

@@ -1,12 +1,57 @@
-@media (min-width: 1025px) {
-  .App {
+.menu {
+  margin: 0 30px 0 0;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  line-height: 70px;
+  clear: right;
+}
+.hamburger {
+  margin: 0 40px 0 0;
+  font-size: 26px;
+  line-height: 70px;
+  display: none;
+  width: 26px;
+  float: right;
+  color: white;
+}
+
+#toggle {
+  display: none;
+}
+
+.nav-bar {
+  background-color: #285943;
+  border-bottom: 1px solid #eaeaeb;
+  text-align: right;
+  height: 70px;
+  line-height: 70px;
+}
+
+@media only screen and (max-width: 500px) {
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .menu {
+    z-index: 1;
     text-align: center;
+    width: 100%;
+    display: none;
   }
 
-  .App-logo {
-    height: 40vmin;
+  .menu a {
+    display: block;
+    border-bottom: 1px solid #eaeaeb;
+    margin: 0;
   }
 
+  #toggle:checked + .menu {
+    display: block;
+  }
   .App-header {
     background-color: #282c34;
     min-height: 100vh;
@@ -34,17 +79,8 @@
   button:focus {
     outline: none;
   }
-  .nav a {
-    color: white;
-    margin: 5px;
-  }
 
-  /* h1,
-h2 {
-  margin-top: 20px;
-} */
-
-  .nav a:hover {
+  .nav-bar a:hover {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
   }
@@ -56,20 +92,6 @@ h2 {
 
   .projects-container > * {
     flex: 1;
-  }
-
-  .navbar {
-    width: 100vw;
-    background-color: #285943;
-    /* background-color: transparent; */
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .flex {
-    width: 300px;
-    display: flex;
-    justify-content: space-around;
   }
 
   .profile-pic-nav {
@@ -85,15 +107,7 @@ h2 {
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
-  .App {
-    text-align: center;
-  }
-
-  .App-logo {
-    height: 40vmin;
-  }
-
+@media (min-width: 1025px) {
   .App-header {
     background-color: #282c34;
     min-height: 100vh;
@@ -103,10 +117,6 @@ h2 {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-  }
-
-  .App-link {
-    color: #09d3ac;
   }
 
   .form {
@@ -121,20 +131,6 @@ h2 {
   button:focus {
     outline: none;
   }
-  .nav a {
-    color: white;
-    margin: 5px;
-  }
-
-  /* h1,
-h2 {
-  margin-top: 20px;
-} */
-
-  .nav a:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-  }
 
   .projects-container {
     display: flex;
@@ -143,20 +139,6 @@ h2 {
 
   .projects-container > * {
     flex: 1;
-  }
-
-  .navbar {
-    width: 100vw;
-    background-color: #285943;
-    /* background-color: transparent; */
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .flex {
-    width: 300px;
-    display: flex;
-    justify-content: space-around;
   }
 
   .profile-pic-nav {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar as Nav } from "react-bootstrap";
+
 import { logout } from "./Auth/Auth";
 import "./Auth/auth.css";
 
@@ -11,20 +11,22 @@ const Navbar = props => {
   };
 
   return (
-    <Nav className="nav navbar">
-      <div>
-        <Link to="/">
-          <img
-            width="30px"
-            height="30px"
-            style={{ marginRight: "10px" }}
-            src={require("../assets/star.png")}
-            alt=""
-          />
-          WishHero
-        </Link>
-      </div>
-      <div className="flex">
+    <div className="nav-bar">
+      {/* <Link to="/">
+        <img
+          width="30px"
+          height="30px"
+          // style={{ marginRight: "10px" }}
+          src={require("../assets/star.png")}
+          alt=""
+        />
+        WishHero
+      </Link> */}
+      <label className="hamburger" htmlFor="toggle">
+        &#9776;
+      </label>
+      <input type="checkbox" id="toggle" />
+      <div className="menu">
         {props.user ? (
           <>
             <Link to={`/profile/${props.user._id}`}>
@@ -56,8 +58,29 @@ const Navbar = props => {
           </>
         )}
       </div>
-    </Nav>
+    </div>
   );
 };
 
 export default Navbar;
+
+// <Nav>
+{
+  /* <Nav className="nav navbar"> */
+}
+{
+  /* <div>
+    <Link to="/">
+      <img
+        width="30px"
+        height="30px"
+        style={{ marginRight: "10px" }}
+        src={require("../assets/star.png")}
+        alt=""
+      />
+      WishHero
+    </Link>
+  </div> */
+}
+
+// </Nav>
