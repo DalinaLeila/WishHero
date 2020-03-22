@@ -8,23 +8,13 @@ body {
   background-color: rgb(251, 251, 251);
 }
 
+*:focus {
+  outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.flex-user-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
-  /* justify-content: space-evenly; */
-}
-.flex-user-container div {
-  width: 300px;
-  margin-top: 20px;
-}
-.flex-user-container div img {
-  border-radius: 100px;
 }
 
 .input-field {
@@ -47,27 +37,13 @@ code {
   width: 100vw;
   height: 70vh;
   /* background-image: url("./assets/landing.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover; */
   background-color: #285943;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.landing-container div {
-  margin-top: 100px;
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.landing-container h1 {
-  font-size: 5em;
-}
-.landing-container p {
-  width: 600px;
 }
 
 .start-button {
@@ -110,4 +86,61 @@ code {
   height: 30vh;
   width: 100vw;
   background-color: white;
+}
+.landing-container div {
+  margin-top: 100px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-user-container div img {
+  border-radius: 100px;
+}
+
+@media (min-width: 1025px) {
+  .landing-container h1 {
+    font-size: 5em;
+  }
+  .landing-container p {
+    width: 600px;
+  }
+  .flex-user-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+  }
+  .flex-user-container div {
+    width: 300px;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .landing-container div {
+    width: 350px;
+  }
+  .landing-container h1 {
+    font-size: 3em;
+  }
+
+  .flex-user-container div a div {
+    display: flex;
+    align-items: center;
+  }
+  .flex-user-container > div {
+    margin-top: 10px;
+    border-bottom: 1px solid gainsboro;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 5px 15px;
+  }
+  .flex-user-container div img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
 }

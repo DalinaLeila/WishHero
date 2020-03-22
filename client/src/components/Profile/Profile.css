@@ -5,28 +5,35 @@
   justify-content: flex-start;
   align-items: flex-end;
 }
-.profile-message {
-  display: flex;
-  width: 100vw;
-  /* justify-content: space-evenly; */
-  margin-left: 25%;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 30px;
+.profile-info button {
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  width: 200px;
+  padding: 10px;
+
+  margin-bottom: 20px;
 }
-.profile-message h3 {
-  margin-right: 80%;
+
+.profile-info button:focus {
+  outline: none;
+}
+
+.profile-info button:hover {
+  background-color: white;
 }
 
 .profile-message button {
   border-radius: 15px;
   padding: 0 15px;
 }
-.button-wrapper {
-  /* width: 100px; */
-  padding: 50px;
+
+.create-card {
+  height: 50px;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 .view-button {
   margin-right: 20px;
@@ -46,77 +53,6 @@
   transform: translateY(1px);
   filter: saturate(150%);
 }
-.profile-wrapper {
-  display: block;
-  margin-left: 25%;
-}
-
-.profile-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-.profile-info {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: space-between;
-  padding: 20px;
-  box-shadow: 3px -4px 10px 5px rgba(0, 0, 0, 0.11);
-  background-color: #77af9c;
-  width: 300px;
-  height: 700px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 100px;
-}
-
-.profile-info img {
-  position: relative;
-  /* width: 15%; */
-}
-
-.profile-info button {
-  border-radius: 20px;
-  background-color: white;
-  color: black;
-  width: 200px;
-  padding: 10px;
-
-  margin-bottom: 20px;
-}
-
-.profile-info button:focus {
-  outline: none;
-}
-
-.profile-info button:hover {
-  background-color: white;
-}
-.about {
-  height: 200px;
-  border-radius: 10px;
-  padding: 10px;
-  border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.418);
-}
-.about h3 {
-  font-weight: bold;
-}
-.gift-num {
-  color: white;
-  margin: 10px;
-  background-color: #77af9c;
-  border-radius: 30px;
-  width: 30px;
-  height: 30px;
-}
-
-.wishlist-name {
-  /* margin-top: 100px; */
-}
 
 .wishlist-card {
   background-color: #fff;
@@ -132,55 +68,6 @@
 
 .wishlist-card:hover {
   background-color: whitesmoke;
-}
-
-.create-card {
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-}
-
-.component-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(251, 251, 251);
-}
-
-.detail-card:hover {
-  cursor: pointer;
-}
-
-.gift-card {
-  background-color: #fff;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
-  box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
-  position: relative;
-  /* width: 20%;
-  height: 130px; */
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  width: 250px;
-  margin-right: 2.33333%;
-  margin-bottom: 1.65rem;
-}
-
-.gift-img {
-  border-radius: 100px;
-}
-
-.flex-add-gift {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-add-gift:focus {
-  outline: none;
 }
 
 .popup {
@@ -205,18 +92,217 @@
   background: white;
 }
 
-.back {
-  float: left;
-  margin-top: 20px;
+.gift-img {
+  border-radius: 100px;
 }
 
-.pointer:hover {
-  cursor: pointer;
+.gift-card {
+  background-color: #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
+  box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
+}
+@media (min-width: 1025px) {
+  .gift-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+    width: 250px;
+    margin-right: 2.33333%;
+    margin-bottom: 1.65rem;
+  }
+  .button-wrapper {
+    /* width: 100px; */
+    padding: 50px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .profile-message {
+    display: flex;
+    width: 100vw;
+    /* justify-content: space-evenly; */
+    margin-left: 25%;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .profile-message h3 {
+    margin-right: 80%;
+  }
+
+  .profile-wrapper {
+    display: block;
+    margin-left: 25%;
+  }
+
+  .profile-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 3px -4px 10px 5px rgba(0, 0, 0, 0.11);
+    background-color: #77af9c;
+    width: 300px;
+    height: 700px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 100px;
+  }
+
+  .profile-info img {
+    position: relative;
+    /* width: 15%; */
+  }
+
+  .about {
+    height: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.418);
+  }
+  .about h3 {
+    font-weight: bold;
+  }
+  .gift-num {
+    color: white;
+    margin: 10px;
+    background-color: #77af9c;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .wishlist-name {
+    /* margin-top: 100px; */
+  }
+
+  .component-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(251, 251, 251);
+  }
+
+  .detail-card:hover {
+    cursor: pointer;
+  }
+
+  .flex-add-gift {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flex-add-gift:focus {
+    outline: none;
+  }
+
+  .back {
+    float: left;
+    margin-top: 20px;
+  }
+
+  .pointer:hover {
+    cursor: pointer;
+  }
+
+  .form-button {
+    background-color: #285943;
+    padding: 8px;
+    color: white;
+    border-radius: 10px;
+  }
 }
 
-.form-button {
-  background-color: #285943;
-  padding: 8px;
-  color: white;
-  border-radius: 10px;
+@media (min-width: 320px) and (max-width: 480px) {
+  .button-wrapper {
+    /* width: 100px; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .view-button {
+    margin-right: 5px;
+  }
+  .profile-banner {
+    height: 10vh;
+    justify-content: center;
+    color: white;
+  }
+
+  .profile-info {
+    background-color: #285943;
+    color: white;
+  }
+
+  .stats-info {
+    display: flex !important;
+    justify-content: space-evenly;
+    /* background-color: #77af9c; */
+  }
+  hr {
+    margin: 0;
+  }
+  .profile-info-header {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .wishlist-card {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(101, 119, 138, 0.15);
+    height: 80px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .gift-card {
+    /* position: relative; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    padding: 10px;
+    /* width: 250px; */
+    /* margin-right: 2.33333%; */
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .gift-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .flex-add-gift {
+  }
+
+  .flex-add-gift:focus {
+  }
+
+  .popup {
+  }
+  .popup_inner {
+  }
+
+  .back {
+  }
+
+  .pointer:hover {
+  }
+
+  .form-button {
+  }
 }

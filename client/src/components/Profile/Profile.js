@@ -192,7 +192,7 @@ export default class Profile extends Component {
           </div>
         </div>
         <div className="profile-info">
-          <div>
+          <div className="profile-info-header">
             <img
               style={{
                 objectFit: "cover",
@@ -246,7 +246,7 @@ export default class Profile extends Component {
               </>
             )}
           </div>
-          <div>
+          <div className="stats-info">
             <p>Gift wishes: {gifts.length}</p>
             <hr />
             <p>Followers: {user.followers.length}</p>

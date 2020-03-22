@@ -5,10 +5,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.auth-container {
-  display: flex;
-  justify-content: center;
-}
+
 .auth-info {
   background-color: #77af9c;
   width: 20%;
@@ -17,7 +14,6 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .auth-info button {
   background-color: transparent;
   border: 1px solid white;
@@ -26,7 +22,6 @@
   width: 150px;
   color: white;
 }
-
 .auth-info button:focus {
   outline: none;
 }
@@ -48,4 +43,38 @@
   flex-direction: column;
 
   align-items: center;
+}
+
+input:focus {
+  outline: none;
+}
+@media (min-width: 1025px) {
+  .auth-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .auth-info {
+    background-color: #77af9c;
+    width: 0;
+    height: 0;
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .auth-component {
+    height: 600px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .auth-wrapper {
+    height: 92vh;
+  }
 }

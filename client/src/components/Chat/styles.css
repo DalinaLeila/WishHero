@@ -1,7 +1,6 @@
 .users {
   border-right: 2px solid gainsboro;
   height: 100vh;
-  padding: 5px;
 
   /* background-color: #285943; */
 }
@@ -9,39 +8,12 @@
 .users h2 {
   font-weight: bold;
   display: flex;
-  padding: 10px;
   margin-bottom: 40px;
 }
 .message h5 {
   font-weight: 200;
   display: flex;
   color: black;
-}
-.users img {
-  width: 60px;
-  height: 60px;
-  border-radius: 100px;
-  background-size: contain;
-}
-
-.img-container {
-  margin-right: 10px;
-  width: 70px;
-  height: 70px;
-}
-
-.users a {
-  /* border-radi  us: 15px; */
-  padding: 10px;
-  margin-bottom: 2px;
-  display: flex;
-  border-bottom: 1px solid gainsboro;
-}
-
-.users a:hover {
-  background-color: gainsboro;
-  color: #285943;
-  text-decoration: none;
 }
 
 .message:hover {
@@ -67,7 +39,6 @@
 }
 
 .rightSide {
-  margin-right: 50px;
   text-align: right;
   position: relative;
 }
@@ -87,8 +58,6 @@
   transform: rotate(90deg);
 }
 .leftSide {
-  margin-left: 50px;
-
   text-align: left;
   position: relative;
 }
@@ -177,4 +146,70 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   width: 100vw;
+}
+
+@media (min-width: 1025px) {
+  .rightSide {
+    margin-right: 50px;
+  }
+  .leftSide {
+    margin-left: 50px;
+  }
+  .users a {
+    /* border-radi  us: 15px; */
+    padding: 10px;
+    margin-bottom: 2px;
+    display: flex;
+    border-bottom: 1px solid gainsboro;
+  }
+
+  .users a:hover {
+    background-color: gainsboro;
+    color: #285943;
+    text-decoration: none;
+  }
+  .users img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    background-size: contain;
+  }
+
+  .img-container {
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+  }
+  .users {
+    padding: 5px;
+  }
+  .users h2 {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .lastMessages {
+    height: 0;
+    color: transparent;
+  }
+  .users img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background-size: contain;
+  }
+
+  .users {
+    padding: 2px;
+  }
+  .users h2 {
+    padding: 2px;
+  }
+  .user-list {
+    width: 110px;
+  }
+  .message {
+    align-items: center;
+  }
 }
