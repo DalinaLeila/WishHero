@@ -6,7 +6,6 @@ import axios from "axios";
 
 const Gift = props => {
   let gift = props.gifts.map(gift => {
-    console.log(gift);
     return (
       <div className="gift-card">
         <a target="_blank" href={gift.giftLink}>

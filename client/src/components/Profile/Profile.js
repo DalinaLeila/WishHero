@@ -30,7 +30,6 @@ export default class Profile extends Component {
         profileUser
       })
       .then(response => {
-        console.log("find/create chat for: ", response.data);
         this.setState({
           chatId: response.data._id
         });
@@ -71,7 +70,6 @@ export default class Profile extends Component {
     axios
       .get(`/api/users/profile/${userId}`)
       .then(response => {
-        console.log(response.data, "should work");
         this.setState({
           user: response.data
           // about: response.data.about
