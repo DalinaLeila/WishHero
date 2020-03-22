@@ -134,10 +134,13 @@ background-size: cover; */
     display: flex;
     align-items: center;
   }
+  /* .flex-user-container > div > a {
+    z-index: -1;
+  } */
+
   .flex-user-container > div {
     margin-top: 10px;
     border-bottom: 1px solid gainsboro;
-
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

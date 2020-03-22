@@ -23,13 +23,30 @@
 }
 
 .nav-bar {
-  background-color: #285943;
-  border-bottom: 1px solid #eaeaeb;
+  position: relative;
   text-align: right;
   height: 70px;
   line-height: 70px;
+  border-bottom: 1px solid #eaeaeb;
+  background-color: #285943;
+}
+.logo {
+  margin-left: 20px;
+  float: left;
+  color: white;
+  text-decoration: none;
 }
 
+.nav-bar a:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+hover {
+  margin-left: 20px;
+  float: left;
+  color: white;
+  text-decoration: none;
+}
 @media only screen and (max-width: 500px) {
   .hamburger {
     display: block;
@@ -37,7 +54,7 @@
   }
 
   .menu {
-    z-index: 1;
+    background-color: rgba(49, 109, 88, 1);
     text-align: center;
     width: 100%;
     display: none;
@@ -78,11 +95,6 @@
 
   button:focus {
     outline: none;
-  }
-
-  .nav-bar a:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
   }
 
   .projects-container {

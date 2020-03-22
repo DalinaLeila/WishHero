@@ -12,16 +12,15 @@ const Navbar = props => {
 
   return (
     <div className="nav-bar">
-      {/* <Link to="/">
+      <Link className="logo" to="/">
         <img
           width="30px"
           height="30px"
-          // style={{ marginRight: "10px" }}
           src={require("../assets/star.png")}
           alt=""
         />
         WishHero
-      </Link> */}
+      </Link>
       <label className="hamburger" htmlFor="toggle">
         &#9776;
       </label>
