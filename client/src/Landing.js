@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Confetti from "./components/Confetti";
 const Landing = () => {
   return (
     <>
+      <Confetti />
       <div className="landing-container">
         <div>
           <h1>Platform to create and share wishlists</h1>

@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
 }
 .auth-info button {
   background-color: transparent;
@@ -29,6 +30,7 @@
   background-color: white;
   padding: 100px;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
 }
 
 .button {
@@ -52,6 +54,7 @@ input:focus {
 @media (min-width: 1025px) {
   .auth-container {
     display: flex;
+
     justify-content: center;
   }
 }
