@@ -51,7 +51,7 @@ server.on("error", error => {
 
 const io = require("socket.io").listen(server);
 
-server.listen(process.env.PORT, () => {
+server.listen(process.env.PORT || process.env.MONGODB_URI, () => {
   console.log(`Listening on http://localhost:${process.env.PORT}`);
 });
 
