@@ -28,6 +28,7 @@ const Navbar = props => {
       <div className="menu">
         {props.user ? (
           <>
+            ´{" "}
             <Link to={`/profile/${props.user._id}`}>
               <img
                 className="profile-pic-nav"
@@ -45,7 +46,6 @@ const Navbar = props => {
             <Link to="/inbox">
               <img width="20px" src={require("../assets/chat.png")} />
             </Link>
-
             <Link to="/" onClick={() => handleLogout()}>
               Logout
             </Link>
