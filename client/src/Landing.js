@@ -42,9 +42,7 @@ const Landing = () => {
         <img width="300px" src={require("./assets/profile_phone.png")} alt="" />
         <h1>Easy to add</h1>
       </div>
-      <div className="footer">
-        &copy; {new Date().getFullYear()} Dalina Weidinger
-      </div>
+      <div className="footer">&copy; {new Date().getFullYear()} WishHero</div>
     </>
   );
 };
