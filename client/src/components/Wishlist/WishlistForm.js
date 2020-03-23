@@ -6,7 +6,7 @@ class WishlistForm extends Component {
   state = {
     name: "",
     description: "",
-    private: true,
+    private: false,
     eventDate: "",
     headerImg: ""
   };
@@ -60,14 +60,14 @@ class WishlistForm extends Component {
         <div className="popup_inner">
           <h6 onClick={this.props.togglePopup}>X</h6>
           <form onSubmit={this.handleSubmit}>
-            <Form.Group id="formGridCheckbox">
+            {/* <Form.Group id="formGridCheckbox">
               <Form.Check
                 type="checkbox"
                 label="Private"
                 checked={this.state.private}
                 onChange={this.togglePrivate}
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group>
               <Form.Label htmlFor="name">Name: </Form.Label>
               <Form.Control
