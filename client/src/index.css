@@ -20,6 +20,13 @@ code {
     monospace;
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+}
+
 .input-field {
   border-radius: 20px;
   padding: 17px;
@@ -37,14 +44,15 @@ code {
 
 .landing-container {
   text-align: center;
-  color: white;
+  color: #285943;
   width: 100vw;
   height: 70vh;
   /* background-image: url("./assets/landing.jpg");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover; */
-  background-color: #285943;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,12 +95,56 @@ background-size: cover; */
 }
 
 .white {
-  /* height: 30vh; */
+  height: 70vh;
   width: 100vw;
-  background-color: #e8e8e8;
+
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 232, 232, 1) 100%
+  );
 }
+
+.white img {
+  position: relative;
+  top: -100px;
+  float: left;
+}
+
+.features {
+  padding-top: 100px;
+}
+.features li {
+  list-style-type: none;
+  margin: 25px 0;
+}
+
+.phone-right {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding-bottom: 200px;
+  background: rgb(232, 232, 232);
+  background: linear-gradient(
+    180deg,
+    rgba(232, 232, 232, 1) 0%,
+    rgba(155, 177, 155, 0.721) 100%
+  );
+}
+
+.phone-right h1 {
+  margin: 100px;
+}
+
+.phone-overlay {
+  position: relative;
+  right: -100px;
+  top: 140px;
+}
+
 .landing-container div {
-  margin-top: 100px;
+  margin-top: 150px;
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -123,6 +175,9 @@ background-size: cover; */
 }
 
 @media (min-width: 320px) and (max-width: 500px) {
+  .landing-container {
+    height: 100vh;
+  }
   .landing-container div {
     width: 350px;
   }
@@ -154,5 +209,15 @@ background-size: cover; */
   .home-container {
     margin-top: 50px;
     text-align: center;
+  }
+
+  .white {
+    display: none;
+  }
+  .phone-right {
+    display: none;
+  }
+  .footer {
+    display: none;
   }
 }
