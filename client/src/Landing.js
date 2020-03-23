@@ -18,7 +18,9 @@ const Landing = () => {
           </Link>
         </div>
       </div>
-      <div className="white"></div>
+      <div className="white">
+        <img width="900px" src={require("./assets/responsive.png")} alt="" />
+      </div>
     </>
   );
 };

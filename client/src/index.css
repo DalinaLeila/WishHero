@@ -87,9 +87,9 @@ background-size: cover; */
 }
 
 .white {
-  height: 30vh;
+  /* height: 30vh; */
   width: 100vw;
-  background-color: white;
+  background-color: #e8e8e8;
 }
 .landing-container div {
   margin-top: 100px;

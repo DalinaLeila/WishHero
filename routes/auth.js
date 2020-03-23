@@ -26,11 +26,18 @@ router.post("/signup", (req, res) => {
           return bcrypt.hash(password, salt);
         })
         .then(hash => {
-          return User.create({
-            username: username,
-            password: hash,
-            profileImg
-          });
+          if (profileImg) {
+            return User.create({
+              username: username,
+              password: hash,
+              profileImg
+            });
+          } else {
+            return User.create({
+              username: username,
+              password: hash
+            });
+          }
         })
         .then(newUser => {
           //passport login function

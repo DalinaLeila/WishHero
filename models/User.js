@@ -5,9 +5,10 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-
     profileImg: {
-      type: String
+      type: String,
+      default:
+        "https://res.cloudinary.com/dfpjrvoqo/image/upload/v1584983114/thing-gallery/profile_default.jpg.jpg"
     },
     about: String,
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],

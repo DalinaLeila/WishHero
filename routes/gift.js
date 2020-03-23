@@ -20,8 +20,7 @@ router.get("/:id", (req, res) => {
 //post a gift
 router.post("/add/:id", (req, res) => {
   let wishlistId = req.params.id;
-  console.log(req.body, "BODY");
-  console.log(req.user);
+
   const {
     name,
     price,
