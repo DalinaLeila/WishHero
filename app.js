@@ -14,7 +14,7 @@ require("./configs/passport");
 // require("dotenv").config();
 mongoose
   .connect(
-    "mongodb://localhost/project-management-server" || process.env.MONGODB_URI,
+    process.env.MONGODB_URI || "mongodb://localhost/project-management-server",
     {
       useNewUrlParser: true
     }
