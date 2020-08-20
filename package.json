@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@google-cloud/vision": "^1.7.2",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.20.0",
     "connect-mongo": "^3.2.0",
